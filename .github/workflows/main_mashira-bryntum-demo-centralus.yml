@@ -52,4 +52,4 @@ jobs:
           app-name: 'mashira-bryntum-demo-centralus'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_71CCF006261E46A8BB331792E51FBF66 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_383F831701CC4871B1A5034054E7FB23 }}
