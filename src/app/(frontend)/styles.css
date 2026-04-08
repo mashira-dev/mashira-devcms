@@ -1,164 +1,657 @@
-:root {
-  --font-mono: 'Roboto Mono', monospace;
-}
-
+/* RESET */
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-html {
-  font-size: 18px;
-  line-height: 32px;
-
-  background: rgb(0, 0, 0);
-  -webkit-font-smoothing: antialiased;
-}
-
-html,
-body,
-#app {
-  height: 100%;
-}
-
 body {
-  font-family: system-ui;
-  font-size: 18px;
-  line-height: 32px;
+  font-family: Arial, sans-serif;
+  color: #222;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
 
-  margin: 0;
-  color: rgb(1000, 1000, 1000);
+body::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari */
+}
 
-  @media (max-width: 1024px) {
-    font-size: 15px;
-    line-height: 24px;
+.app-bg {
+  min-height: 100vh;
+  background-color: #fff;
+  background-image: url("/images/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  /* background-attachment: fixed; */
+  animation: moveBackground 20s ease-in-out infinite alternate;
+}
+
+.app-bg::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes moveBackground {
+  0% {
+    background-position: left center;
+  }
+
+  50% {
+    background-position: center top;
+  }
+
+  100% {
+    background-position: right center;
   }
 }
 
-img {
-  max-width: 100%;
-  height: auto;
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 60px;
+  align-items: center;
+  background: transparent;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.right-nav {
+  border: 1px solid #E7E7E7;
+  padding: 8px 12px;
+}
+
+/* .right-nav a */
+
+.navbar nav {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #555;
+  font-size: 14px;
+  padding: 8px;
+}
+
+.navbar a:hover {
+  background-color: #F3F2F2;
+  color: #2B2B2D;
+  /* optional for contrast */
+}
+
+.navbar .cta {
+  background: #111;
+  color: white;
+  padding: 8px 14px;
+  display: flex;
+}
+
+.navbar .cta:hover {
+  background-color: #000;
+  color: #ffff;
+}
+
+.rightlogo {
+  background-color: #fff;
+  margin-left: 12px;
+}
+
+/* HERO */
+.hero {
+  /* height: 90vh; */
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+  /* background: #fff; */
+  background: transparent;
+}
+
+/* .hero-content {
+  max-width: 750px;
+} */
+
+.tag {
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  border: 1px dashed #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+}
+
+.hero h1 {
+  font-size: 70px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.hero .italic {
+  font-style: italic;
+  font-family: serif;
+}
+
+.description {
+  margin-top: 20px;
+  color: #5D5D5D;
+  width: 60%;
+  font-size: 20px;
+  place-self: center;
+}
+
+.actions {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.primary {
+  background: #333;
+  color: white;
+  padding: 12px 16px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.secondary {
+  background: transparent;
+  border: 1px solid #ccc;
+  padding: 12px 20px;
+  cursor: pointer;
+}
+
+.text-wrapper {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  height: 1.5em;
+  /* match text height */
+}
+
+.text {
   display: block;
+  transition: transform 0.4s ease;
 }
 
-h1 {
-  margin: 40px 0;
-  font-size: 64px;
-  line-height: 70px;
-  font-weight: bold;
+/* stack the second text below */
+.text:nth-child(2) {
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
 
-  @media (max-width: 1024px) {
-    margin: 24px 0;
-    font-size: 42px;
-    line-height: 42px;
+/* hover animation */
+.text-wrapper:hover .text {
+  transform: translateY(-100%);
+}
+
+
+
+.btn__icon {
+  display: flex;
+  background: #FF3503;
+}
+
+.btn__icon img {
+  padding: 2px;
+}
+
+.partners-section {
+  display: flex;
+  width: 100%;
+  border-top: 1px solid #e7e7e7;
+  border-bottom: 1px solid #e7e7e7;
+  background: #fff;
+}
+
+/* LEFT SIDE */
+.left-partners-section {
+  width: 60%;
+  padding: 20px 30px;
+}
+
+.left-partners-section h1 {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: #666;
+}
+
+/* LOGO ITEM */
+.logo-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #999;
+  font-weight: 500;
+}
+
+/* MARQUEE */
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-content {
+  display: flex;
+  gap: 32px;
+  width: max-content;
+  animation: scroll 18s linear infinite;
+}
+
+/* RIGHT SIDE */
+.right-partners-section {
+  width: 40%;
+  display: flex;
+}
+
+.stat-box {
+  flex: 1;
+  text-align: left;
+  padding: 20px;
+  border-left: 1px solid #e7e7e7;
+}
+
+.stat-box h2 {
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #111;
+}
+
+.stat-box p {
+  font-size: 14px;
+  color: #666;
+}
+
+/* ANIMATION */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
   }
 
-  @media (max-width: 768px) {
-    font-size: 38px;
-    line-height: 38px;
-  }
-
-  @media (max-width: 400px) {
-    font-size: 32px;
-    line-height: 32px;
+  100% {
+    transform: translateX(-50%);
   }
 }
 
-p {
-  margin: 24px 0;
+/* WhatWeDo.css */
 
-  @media (max-width: 1024px) {
-    margin: calc(var(--base) * 0.75) 0;
-  }
+/* ──────────────────────────────────────────
+   WHAT WE DO — full-component horizontal scroll
+   ────────────────────────────────────────── */
+
+.whatwedo {
+  font-family: "Inter", sans-serif;
+  background-color: #FAFAFA;
+  background-image: url("/images/Ellipse.png");
+  background-repeat: no-repeat;
+  background-position: right center;
+  /* background-size: 600px; */
+
+  /* Must fill the viewport so GSAP can pin it flush */
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
-a {
-  color: currentColor;
-
-  &:focus {
-    opacity: 0.8;
-    outline: none;
-  }
-
-  &:active {
-    opacity: 0.7;
-    outline: none;
-  }
+/* ── SLIDING TRACK ──────────────────────────
+   The whole track — left panel + cards — moves
+   as a single unit. Width is determined by content.
+   ─────────────────────────────────────────── */
+.wwd-track {
+  display: flex;
+  align-items: stretch;
+  gap: 40px;
+  padding: 60px;
+  will-change: transform;
+  /* Don't constrain width — let content dictate it */
 }
 
-svg {
-  vertical-align: middle;
-}
-
-.home {
+/* ── LEFT INFO PANEL ────────────────────── */
+.wwd-left-panel {
+  flex: 0 0 420px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  padding-right: 40px;
+  /* border-right: 1px solid #ddd; */
+}
+
+.tag {
+  display: inline-block;
+  font-size: 12px;
+  padding: 6px 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  color: #666;
+  margin-bottom: 30px;
+  width: fit-content;
+}
+
+.wwd-left-panel h1 {
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: #222;
+  margin: 0 0 40px;
+}
+
+.italic {
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* ── BUTTON ─────────────────────────────── */
+.btn {
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 14px 18px;
+  display: inline-flex;
   align-items: center;
-  height: 100vh;
-  padding: 45px;
-  max-width: 1024px;
+  gap: 12px;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.arrow-box {
+  background: #ff4d2d;
+  padding: 6px 10px;
+}
+
+/* ── CARDS ──────────────────────────────── */
+.card {
+  background: #fff;
+  flex-direction: column;
+  /* flex: 0 0 300px; */
+  /* min-height: 340px; */
+  padding: 40px;
+  display: flex;
+  position: relative;
+  border: 1px solid #E7E7E7;
+  width: 470px;
+  height: 500px;
+}
+
+/* .card img {
+  width: 120px;
+  height: 120px;
+} */
+
+.icon {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.hex {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #ff4d2d;
+  border-radius: 3px;
+}
+
+/* ── CARD TEXT ──────────────────────────── */
+.card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  /* margin-bottom: 15px; */
+  margin: 24px 0;
+  color: #222;
+}
+
+.card p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #555;
+}
+
+.card-arrow {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: #333;
+  width: 50px;
+  height: 50px;
+  align-content: center;
+  text-align: center;
+  border-left: 1px solid #E7E7E7;
+  border-top: 1px solid #E7E7E7;
+  transition: background 0.3s ease;
+}
+
+.card-arrow:hover {
+  background-color: #FF3503;
+}
+
+.cardIcon {
+  width: 120px;
+  height: 120px;
+}
+
+/* services-section start */
+
+.services-section {
+  /* background: linear-gradient(to bottom, #0c0c0c, #1a1a1a); */
+  color: #fff;
+  background: #2B2B2D;
+  padding: 80px 20px;
+  /* background-image: url("/images/enterpriseBg.png"); */
+  text-align: center;
+}
+
+.badge {
+  display: inline-block;
+  border: 1px solid #666;
+  padding: 6px 14px;
+  font-size: 12px;
+  border-radius: 20px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.heading {
+  max-width: 800px;
   margin: 0 auto;
-  overflow: hidden;
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 1.6;
+}
 
-  @media (max-width: 400px) {
-    padding: 24px;
+.heading span {
+  font-style: italic;
+  color: #cfcfcf;
+}
+
+.cards {
+  /* display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 60px;
+  border: 1px solid #333; */
+  border: 1px solid #E7E7E7;
+  /* grid-template-columns: repeat(4, 1fr); */
+  margin-top: 60px;
+  /* display: grid; */
+  width: 100%;
+  display: flex;
+}
+
+.enterprisecard {
+  /* padding: 40px 25px;
+  border-right: 1px solid #333;
+  text-align: left;
+  transition: all 0.3s ease;
+  width: 336px;
+  height: 441px; */
+  text-align: left;
+  border-right: 1px solid #E7E7E7;
+  width: 25%;
+  height: 440px;
+  padding: 40px 25px;
+  transition: all .3s;
+}
+
+.enterprisecard:last-child {
+  border-right: none;
+}
+
+.enterprisecard:hover {
+  /* transform: translateY(-5px); */
+  background-image: url("/images/Ellipse.png");
+  background-repeat: no-repeat;
+  /* background-position: right center; */
+  background-position: 30%;
+}
+
+.imageicon {
+  margin-bottom: 20px;
+}
+
+.imageicon img {
+  width: 150px;
+  height: 150px;
+}
+
+.enterprisecard h3 {
+  font-size: 18px;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.enterprisecard p {
+  font-size: 14px;
+  color: #aaa;
+  margin: 20px 0;
+  line-height: 1.6;
+}
+
+@media (max-width: 992px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
-
-    h1 {
-      text-align: center;
-    }
-  }
-
-  .links {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
-    a {
-      text-decoration: none;
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-    }
-
-    .admin {
-      color: rgb(0, 0, 0);
-      background: rgb(1000, 1000, 1000);
-      border: 1px solid rgb(0, 0, 0);
-    }
-
-    .docs {
-      color: rgb(1000, 1000, 1000);
-      background: rgb(0, 0, 0);
-      border: 1px solid rgb(1000, 1000, 1000);
-    }
-  }
-
-  .footer {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    @media (max-width: 1024px) {
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    p {
-      margin: 0;
-    }
-
-    .codeLink {
-      text-decoration: none;
-      padding: 0 0.5rem;
-      background: rgb(60, 60, 60);
-      border-radius: 4px;
-    }
+  .enterprisecard {
+    border-bottom: 1px solid #333;
   }
 }
+
+@media (max-width: 600px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .heading {
+    font-size: 24px;
+  }
+}
+
+/* services-section end */
+
+
+/* accordions start - why mashira */
+
+
+.scroll-wrapper {
+  display: flex;
+  min-height: 200vh;
+  background: #f5f5f5;
+}
+
+/* LEFT */
+.left {
+  width: 50%;
+  padding: 80px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.scrolltag {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.scrollheading {
+  font-size: 48px;
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+
+.scrollheading em {
+  font-style: italic;
+  font-family: serif;
+}
+
+/* ACCORDION */
+.accordion {
+  border-top: 1px solid #ddd;
+}
+
+.accordion-item {
+  border-bottom: 1px solid #ddd;
+  padding: 20px 0;
+  transition: all 0.3s ease;
+}
+
+.accordion-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.accordion-header h3 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  color: #666;
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 100px;
+  margin-top: 10px;
+}
+
+/* RIGHT */
+.right {
+  width: 50%;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.bg {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.6s ease;
+}
+
+/* accordions end - why mashira */
