@@ -1,6 +1,7 @@
 import Link from "next/link";
 import "./styles.css";
 import Image from "next/image";
+import rightA from "../../../public/images/rightArrow.png"
 import logo from "@/assets/images/mashiralogo.png"
 import rightUp from "@/assets/images/solar_arrow-up-linear.png"
 
@@ -38,8 +39,45 @@ export default function FrontendLayout({
               </Link>
             </nav>
           </header>
-          <main>{children}</main>
+          <section className="hero">
+            <div className="hero-content">
+              <p className="tag">
+                DIGITAL TRANSFORMATION. AI. DATA & INTELLIGENCE. CLOUD. MANAGEMENT
+              </p>
+
+              <h1>
+                Enterprise amplification through <br />
+                <span className="italic">Intelligent</span> Digital Solutions
+              </h1>
+
+              <p className="description">
+                Mashira specializes in services for creating, curating, implementing
+                and managing digital solutions across all enterprise functions.
+                With presence across US, EU and Asia, Mashira is a stable and
+                reliable partner to deliver precise digital goals.
+              </p>
+
+              <div className="actions">
+                <button className="primary">
+                  <div className="text-wrapper">
+                    <span className="text">Get Started</span>
+                    <span className="text">Get Started</span>
+                  </div>
+                  <span className="btn__icon">
+                    <Image
+                      src={rightA}
+                      alt="arrow"
+                      width="24"
+                      height="24"
+                    />
+                  </span>
+                </button>
+                <button className="secondary">Explore Services</button>
+              </div>
+            </div>
+          </section>
         </div>
+        <main>{children}</main>
       </body>
     </html>
   );
