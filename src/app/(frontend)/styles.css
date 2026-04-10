@@ -60,7 +60,7 @@ body::-webkit-scrollbar {
 }
 
 /* NAVBAR */
-.navbar {
+/* .navbar {
   display: flex;
   justify-content: space-between;
   padding: 20px 60px;
@@ -78,8 +78,6 @@ body::-webkit-scrollbar {
   padding: 8px 12px;
 }
 
-/* .right-nav a */
-
 .navbar nav {
   display: flex;
   gap: 25px;
@@ -96,7 +94,6 @@ body::-webkit-scrollbar {
 .navbar a:hover {
   background-color: #F3F2F2;
   color: #2B2B2D;
-  /* optional for contrast */
 }
 
 .navbar .cta {
@@ -114,7 +111,7 @@ body::-webkit-scrollbar {
 .rightlogo {
   background-color: #fff;
   margin-left: 12px;
-}
+} */
 
 /* HERO */
 .hero {
@@ -1147,11 +1144,16 @@ body::-webkit-scrollbar {
 }
 
 .top-glow {
-  width: 280px;
+  /* width: 280px;
   height: 280px;
   top: -100px;
+  right: -50px; */
+  width: 140px;
+  height: 200px;
+  top: -80px;
   right: -50px;
-  background: rgba(255, 60, 0, 0.35);
+  /* background: rgba(255, 60, 0, 0.35); */
+  background: #FF3503;
 }
 
 .bottom-glow {
@@ -1159,7 +1161,8 @@ body::-webkit-scrollbar {
   height: 260px;
   bottom: -120px;
   left: -70px;
-  background: rgba(255, 60, 0, 0.35);
+  /* background: rgba(255, 60, 0, 0.35); */
+  background: #FF3503;
 }
 
 /* CONTROLS */
@@ -1379,3 +1382,4 @@ body::-webkit-scrollbar {
 }
 
 /* Testominials end */
+

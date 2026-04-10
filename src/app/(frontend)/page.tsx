@@ -11,7 +11,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 // import "swiper/css/navigation";
 import bubbleChart from "../../../public/images/support-technology.png";
-import Footer from "../(frontend)/footer"
+import Footer from "../(frontend)/footer";
+import styles from "./WhyMashira.module.css";
+import Navbar from "../(frontend)/navbar";
+import rightA from "../../../public/images/rightArrow.png"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -68,33 +71,6 @@ const enterprises = [
     title: "Operational Effectiveness Solution",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
     icon: "/images/functionSol4.png",
-  },
-];
-
-const data = [
-  {
-    title: "Data to decisions with AI-based Digital Solutions",
-    // description: "Create smarter workflows and generate faster growth",
-    image: "/images/whyM1.1.png",
-    icon: "/images/whyM1.png",
-  },
-  {
-    title: "Create smarter workflows and generate faster growth",
-    // description: "Automate processes and scale efficiently",
-    image: "/images/whyM2.1.png",
-    icon: "/images/whyM2.png",
-  },
-  {
-    title: "From insight to execution – an outcome based partnership",
-    // description: "We deliver measurable business results",
-    image: "/images/whyM3.1.png",
-    icon: "/images/whyM3.png",
-  },
-  {
-    title: "Tailored to your precise needs",
-    // description: "Custom solutions for every business",
-    image: "/images/whyM4.1.png",
-    icon: "/images/whyM4.png",
   },
 ];
 
@@ -161,14 +137,43 @@ const testimonials = [
   },
 ];
 
+const sections = [
+  {
+    id: 1,
+    label: "Data to decisions with AI-based Digital Solutions",
+    // Icon: IconGrid,
+    Icon: "/images/whyM1.png",
+    Illustration: "/images/whyM1.1.png",
+  },
+  {
+    id: 2,
+    label: "Create smarter workflows and generate faster growth",
+    Icon: "/images/whyM2.png",
+    Illustration: "/images/whyM2.1.png",
+  },
+  {
+    id: 3,
+    label: "From insight to execution – an outcome based partnership",
+    Icon: "/images/whyM3.png",
+    Illustration: "/images/whyM3.1.png",
+  },
+  {
+    id: 4,
+    label: "Tailored to your precise needs",
+    Icon: "/images/whyM4.png",
+    Illustration: "/images/whyM4.1.png",
+  },
+];
+
 export default function HomePage() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const containerRef = useRef<HTMLDivElement | null>(null);
   const swiperRef = useRef<SwiperType | null>(null);
   const [animating, setAnimating] = useState(false);
   const [direction, setDirection] = useState("next");
   const [currentValue, setCurrentValue] = useState(0);
+  const [imageVisible, setImageVisible] = useState(true);
+  const rowRefs = useRef<(HTMLLIElement | null)[]>([]);
 
   const redirect = (dir: any) => {
     if (animating) return;
@@ -186,7 +191,6 @@ export default function HomePage() {
 
   const { quote, name, role } = testimonials[currentValue];
 
-  // const sectionsRef = useRef<(HTMLDivElement | null)[]>([]);
   const logos = [
     { name: "Boltshift", icon: "/images/boltshift.png" },
     { name: "Lightbox", icon: "/images/lightbox.png" },
@@ -230,71 +234,68 @@ export default function HomePage() {
   }, []);
 
   useEffect(() => {
-    if (!containerRef.current) return;
-
-    const total = 4; // number of tabs
-
-    const ctx = gsap.context(() => {
-      ScrollTrigger.create({
-        trigger: containerRef.current,
-        start: "top top",
-        end: `+=${total * 100}%`, // scroll length
-        pin: true,
-        scrub: true,
-        onUpdate: (self) => {
-          const progress = self.progress; // 0 → 1
-          const index = Math.min(
-            total - 1,
-            Math.floor(progress * total)
-          );
-          setActiveIndex(index);
-        },
+    const handleScroll = () => {
+      const trigger = window.innerHeight * 0.5;
+      let next = 0;
+      rowRefs.current.forEach((ref, i) => {
+        if (ref && ref.getBoundingClientRect().top <= trigger) next = i;
       });
-    }, containerRef);
+      setActiveIndex((prev) => {
+        if (prev !== next) {
+          setImageVisible(false);
+          setTimeout(() => setImageVisible(true), 220);
+          return next;
+        }
+        return prev;
+      });
+    };
 
-    return () => ctx.revert();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
 
   return (
     <>
-      {/* <section className="hero">
-        <div className="hero-content">
-          <p className="tag">
-            DIGITAL TRANSFORMATION. AI. DATA & INTELLIGENCE. CLOUD. MANAGEMENT
-          </p>
+      <div className="app-bg">
+        <Navbar />
+        <section className="hero">
+          <div className="hero-content">
+            <p className="tag">
+              DIGITAL TRANSFORMATION. AI. DATA & INTELLIGENCE. CLOUD. MANAGEMENT
+            </p>
 
-          <h1>
-            Enterprise amplification through <br />
-            <span className="italic">Intelligent</span> Digital Solutions
-          </h1>
+            <h1>
+              Enterprise amplification through <br />
+              <span className="italic">Intelligent</span> Digital Solutions
+            </h1>
 
-          <p className="description">
-            Mashira specializes in services for creating, curating, implementing
-            and managing digital solutions across all enterprise functions.
-            With presence across US, EU and Asia, Mashira is a stable and
-            reliable partner to deliver precise digital goals.
-          </p>
+            <p className="description">
+              Mashira specializes in services for creating, curating, implementing
+              and managing digital solutions across all enterprise functions.
+              With presence across US, EU and Asia, Mashira is a stable and
+              reliable partner to deliver precise digital goals.
+            </p>
 
-          <div className="actions">
-            <button className="primary">
-              <div className="text-wrapper">
-                <span className="text">Get Started</span>
-                <span className="text">Get Started</span>
-              </div>
-              <span className="btn__icon">
-                <Image
-                  src={rightA}
-                  alt="arrow"
-                  width="24"
-                  height="24"
-                />
-              </span>
-            </button>
-            <button className="secondary">Explore Services</button>
+            <div className="actions">
+              <button className="primary">
+                <div className="text-wrapper">
+                  <span className="text">Get Started</span>
+                  <span className="text">Get Started</span>
+                </div>
+                <span className="btn__icon">
+                  <Image
+                    src={rightA}
+                    alt="arrow"
+                    width="24"
+                    height="24"
+                  />
+                </span>
+              </button>
+              <button className="secondary">Explore Services</button>
+            </div>
           </div>
-        </div>
-      </section> */}
+        </section>
+      </div>
       <section className="partners-section">
         <div className="left-partners-section">
           <h1>Trusted by</h1>
@@ -415,47 +416,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section ref={containerRef} className="scroll-wrapper">
-        <div className="left">
-          <span className="scrolltag">/ WHY MASHIRA</span>
-
-          <h1 className="scrollheading">
-            An all-weather, <em>Stable</em> and <br />
-            <em>Reliable Partner</em>
-          </h1>
-
-          <div className="accordion">
-            {data.map((item, index) => (
-              <div
-                key={index}
-                className={`accordion-item ${activeIndex === index ? "active" : ""
-                  }`}
-              >
-                <div className="accordion-header">
-                  {index === 0 && (
-                    <img src={item.icon} className="iconimg" alt="icon" />
-                  )}
-                  <h3>{item.title}</h3>
-                </div>
-
-                {/* <div className="accordion-content">
-                  <p>{item.description}</p>
-                </div> */}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="right">
-          <div
-            className="bg"
-            style={{
-              backgroundImage: `url(${data[activeIndex].image})`,
-            }}
-          />
-        </div>
-      </section>
-
       <section className="blog-section">
         <div className="blog-header">
           <div>
@@ -555,6 +515,51 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className={styles.section}>
+
+        <div className={styles.left}>
+          <div className={styles.eyebrow}>/ Why Mashira</div>
+
+          <h2 className={styles.headline}>
+            An all-weather, <em>Stable</em> and<br />
+            <em>Reliable Partner</em>
+          </h2>
+
+          <ul className={styles.rows}>
+            {sections.map((sec, i) => (
+              <li
+                key={sec.id}
+                ref={(el) => {
+                  rowRefs.current[i] = el;
+                }}
+                className={`${styles.row}${activeIndex === i ? " " + styles.active : ""}`}
+              >
+                <Image
+                  src={sec.Icon}
+                  alt="icon"
+                  width={32}
+                  height={32}
+                  className={styles.icon}
+                />
+                <span className={styles.label}>{sec.label}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className={styles.right}>
+          <div className={`${styles.illustration} ${imageVisible ? styles.in : styles.out}`}>
+            <Image
+              src={sections[activeIndex].Illustration}
+              alt="illustration"
+              fill
+              style={{ objectFit: "contain" }}
+            />
+          </div>
+        </div>
+
+      </section>
+
       <section className="testimonials-section">
         <div className="testimonials-overlay" />
 
@@ -644,7 +649,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
       <Footer />
     </>
   );
