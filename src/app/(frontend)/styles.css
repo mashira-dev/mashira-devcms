@@ -59,60 +59,6 @@ body::-webkit-scrollbar {
   }
 }
 
-/* NAVBAR */
-/* .navbar {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 60px;
-  align-items: center;
-  background: transparent;
-}
-
-.logo {
-  font-size: 22px;
-  font-weight: 600;
-}
-
-.right-nav {
-  border: 1px solid #E7E7E7;
-  padding: 8px 12px;
-}
-
-.navbar nav {
-  display: flex;
-  gap: 25px;
-  align-items: center;
-}
-
-.navbar a {
-  text-decoration: none;
-  color: #555;
-  font-size: 14px;
-  padding: 8px;
-}
-
-.navbar a:hover {
-  background-color: #F3F2F2;
-  color: #2B2B2D;
-}
-
-.navbar .cta {
-  background: #111;
-  color: white;
-  padding: 8px 14px;
-  display: flex;
-}
-
-.navbar .cta:hover {
-  background-color: #000;
-  color: #ffff;
-}
-
-.rightlogo {
-  background-color: #fff;
-  margin-left: 12px;
-} */
-
 /* HERO */
 .hero {
   /* height: 90vh; */
@@ -167,7 +113,7 @@ body::-webkit-scrollbar {
 .primary {
   background: #333;
   color: white;
-  padding: 12px 16px;
+  padding: 6px 8px;
   border: none;
   cursor: pointer;
   display: flex;
@@ -187,6 +133,7 @@ body::-webkit-scrollbar {
   display: inline-block;
   overflow: hidden;
   height: 1.5em;
+  align-content: center;
   /* match text height */
 }
 
@@ -1382,3 +1329,7 @@ body::-webkit-scrollbar {
 }
 
 /* Testominials end */
+
+.swiper-wrapper {
+  display: flex;
+}

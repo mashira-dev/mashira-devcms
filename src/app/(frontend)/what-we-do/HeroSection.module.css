@@ -332,12 +332,17 @@
 /* approachContainer start */
 
 .approachContainer {
-    background: linear-gradient(120deg, #111 0%, #1a1a1a 100%);
+    /* background-color: linear-gradient(120deg, #111 0%, #1a1a1a 100%); */
+    background-image: url("/images/enterpriseBck.png");
     color: #fff;
     height: 90vh;
     padding: 60px;
     display: flex;
     align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
 }
 
 .containers {
@@ -482,7 +487,7 @@
     transform: translateX(-50%);
     width: 6px;
     height: 6px;
-    background-color: #d85a30;
+    background-color: #FF3503;
     border-radius: 50%;
 }
 
@@ -493,7 +498,7 @@
     transform: translateX(-50%);
     width: 1px;
     height: 76px;
-    background-color: #d85a30;
+    background-color: #FF3503;
 }
 
 .connectorHorizontal {
@@ -502,7 +507,7 @@
     left: calc(16.6667% + 1px);
     right: calc(16.6667% + 1px);
     height: 1px;
-    background-color: #d85a30;
+    background-color: #FF3503;
 }
 
 .connectorBranchLeft,
@@ -512,7 +517,7 @@
     top: 50px;
     width: 1.5px;
     height: 32px;
-    background-color: #d85a30;
+    background-color: #FF3503;
 }
 
 .connectorBranchLeft {
@@ -610,8 +615,377 @@
     margin-top: 5px;
     width: 7px;
     height: 7px;
-    background-color: #d85a30;
+    background-color: #FF3503;
     border-radius: 1px;
 }
 
 /* services end */
+
+/* case study starts */
+
+.caseStudy {
+    position: relative;
+    width: 100%;
+    /* height: 320px; */
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+
+    /* Background Image */
+    background-image: url("/images/casestudy.png");
+    /* <-- add your image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+/* Dark caseOverlay for readability */
+.caseOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+            rgba(20, 20, 20, 0.9) 0%,
+            rgba(20, 20, 20, 0.7) 50%,
+            rgba(255, 80, 0, 0.2) 100%);
+    z-index: 1;
+}
+
+.caseContent {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+}
+
+.caseBadge {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 1px;
+    padding: 6px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    margin-bottom: 16px;
+    color: #ddd;
+}
+
+.caseTitle {
+    font-size: 42px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0;
+}
+
+/* Right side button */
+.action {
+    position: relative;
+    z-index: 2;
+}
+
+.readMore {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 10px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.readMore:hover {
+    background: #f2f2f2;
+}
+
+.arrow {
+    background: #ff4d00;
+    color: #fff;
+    padding: 6px 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* case study Ends */
+
+/* DO's section start */
+
+
+.wrapper {
+    position: relative;
+    /* min-height: 100vh; */
+    padding: 60px 20px;
+    background: radial-gradient(circle at bottom, #2a0f08, #0c0c0c 60%);
+    color: #fff;
+    background-image: url("/images/enterpriseBck.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+/* optional grain DoOverlay */
+.DoOverlay {
+    position: absolute;
+    inset: 0;
+    /* background: url("/bg-texture.png"); */
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+.DoContainer {
+    max-width: 1100px;
+    margin: auto;
+    text-align: center;
+}
+
+.DoBadge {
+    display: inline-block;
+    font-size: 12px;
+    border: 1px solid #555;
+    padding: 6px 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.DoHeading {
+    font-size: 42px;
+    font-weight: 500;
+    margin-bottom: 60px;
+}
+
+.DoHeading span {
+    font-style: italic;
+    color: #ddd;
+}
+
+.DoGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* gap: 40px; */
+    text-align: left;
+}
+
+/* LEFT DoCard */
+.DoCard {
+    position: relative;
+    padding: 30px;
+    border: 1px solid #333;
+    background: linear-gradient(180deg,
+            rgba(20, 20, 20, 0.9),
+            rgba(10, 10, 10, 0.95));
+    border-radius: 6px;
+    overflow: hidden;
+    width: 500px;
+    height: 500px;
+}
+
+/* bottom glow */
+.DoCard::after {
+    content: "";
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    /* background: radial-gradient(circle, rgba(255, 80, 20, 0.5), transparent 70%); */
+}
+
+.DoCard h3 {
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.DoCard ul {
+    list-style: none;
+    padding: 0;
+}
+
+.DoCard li {
+    margin: 40px 0;
+    position: relative;
+    padding-left: 28px;
+}
+
+/* check icon */
+.DoCard li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    /* top: 4px; */
+    width: 18px;
+    height: 18px;
+    background: url("/images/tick.png") no-repeat center;
+    background-size: contain;
+}
+
+.notForYou {
+    margin: 30px 0;
+}
+
+/* RIGHT SIDE */
+.notForYou h3 {
+    margin-bottom: 50px;
+    font-size: 18px;
+}
+
+.notForYou ul {
+    list-style: none;
+    padding: 0;
+}
+
+.notForYou li {
+    margin: 30px 0;
+    position: relative;
+    padding-left: 28px;
+    color: #fff;
+}
+
+/* cross icon */
+.notForYou li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    /* top: 4px; */
+    width: 18px;
+    height: 18px;
+    background: url("/images/cross.png") no-repeat center;
+    background-size: contain;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .DoGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .DoHeading {
+        font-size: 30px;
+    }
+}
+
+.testimonialblob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(70px);
+    pointer-events: none;
+}
+
+.bottomglow {
+    background: #ff3503;
+    width: 260px;
+    height: 260px;
+    /* bottom: -120px; */
+    left: 70%;
+}
+
+/* DO's section end */
+
+/* faq */
+.faqContainer {
+    padding: 60px 40px;
+    background: #fff;
+    margin: auto;
+}
+
+.faqHeader {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.faqBadge {
+    display: inline-block;
+    font-size: 12px;
+    padding: 6px 12px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    color: #555;
+}
+
+.faqTitle {
+    font-size: 36px;
+    font-weight: 500;
+    color: #222;
+}
+
+.faqTitle span {
+    font-style: italic;
+    font-family: serif;
+}
+
+/* Accordion */
+.accordion {
+    width: 100%;
+}
+
+.faqItem {
+    border-bottom: 1px solid #ddd;
+    /* transition: all 0.5s ease; */
+}
+
+/* Active (dark block like your UI) */
+.active {
+    background: #2b2b2b;
+    color: #fff;
+    margin-bottom: 10px;
+    /* padding: 10px 20px; */
+}
+
+.question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 18px 36px;
+    font-size: 16px;
+    height: 90px;
+}
+
+.active .question {
+    color: #fff;
+}
+
+.faqIcon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+/* Remove old animation */
+.answer {
+    padding: 0 10px 20px;
+    opacity: 1;
+    max-height: none;
+    padding: 0 0 20px 36px;
+    width: 60%;
+}
+
+.answerWrapper {
+    overflow: hidden;
+    height: 0;
+    transition: height 0.35s ease;
+}
+
+.show {
+    max-height: 200px;
+    opacity: 1;
+    padding: 0 10px 20px;
+}
+
+.answer p {
+    font-size: 14px;
+    color: #ccc;
+}
+
+.faqItem:not(.active) .answer p {
+    color: #666;
+}
+
+/* faq */

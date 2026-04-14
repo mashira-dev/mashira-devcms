@@ -7,12 +7,13 @@ import contextual from "../../../../public/images/contextual.png"
 import governed from "../../../../public/images/governed.png"
 import scalable from "../../../../public/images/scalable.png"
 import outcomes from "../../../../public/images/outcomes.png"
+import { useRef, useState } from "react";
 import Footer from "../footer";
 
 const cards = [
     {
         iconDefault: "/images/ai-brain-02-black.png",
-        iconHover: "/images/ai-brain-02.png",
+        iconHover: "/images/ai-brain.png",
         title:
             "You already know AI works. The problem is getting it to work for you.",
         desc: "These are the conversations we have with technology leaders every week before they start working with us.",
@@ -91,6 +92,36 @@ const services = [
     },
 ];
 
+const faqData = [
+    {
+        question: "Do you provide AI implementation services for tech businesses only?",
+        answer:
+            "No. In fact majority Our clients are We are industry agnostic and serve clients in diverse fields such as Pharmaceuticals, Healthcare, Legal, Media and Entertainment, Defence, EPC, in addition to clients in IT, BFSI, Manufacturing, et al.",
+    },
+    {
+        question:
+            "What differentiates the AI Implementation Solutions of Mashira from others?",
+        answer:
+            "We focus on scalable, real-world AI solutions tailored to business needs with strong integration capabilities.",
+    },
+    {
+        question: "Can you integrate with our existing ERP and CRMs?",
+        answer:
+            "Yes, we seamlessly integrate with most ERP and CRM platforms using APIs and middleware solutions.",
+    },
+    {
+        question: "How do you handle fragmented enterprise data?",
+        answer:
+            "We unify and structure data using pipelines, ensuring consistency and actionable insights.",
+    },
+    {
+        question:
+            "Who are your AI Implementation services best suited for?",
+        answer:
+            "Our services are ideal for enterprises looking to leverage AI for efficiency, automation, and growth.",
+    },
+];
+
 export default function WhatWeDoPage() {
 
     const logos = [
@@ -103,6 +134,43 @@ export default function WhatWeDoPage() {
         { name: "FeatherDev", icon: "/images/featherDev.png" },
         { name: "GlobalBank", icon: "/images/globalbank.png" },
     ];
+
+    const [activeIndex, setActiveIndex] = useState<number | null>(null);
+    const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+    const toggle = (index: number) => {
+        const currentEl = contentRefs.current[index];
+
+        if (!currentEl) return;
+
+        if (activeIndex === index) {
+            // CLOSE (like slideUp)
+            currentEl.style.height = currentEl.scrollHeight + "px";
+
+            requestAnimationFrame(() => {
+                currentEl.style.height = "0px";
+            });
+
+            setActiveIndex(null);
+        } else {
+            // CLOSE previous
+            if (activeIndex !== null) {
+                const prevEl = contentRefs.current[activeIndex];
+                if (prevEl) {
+                    prevEl.style.height = prevEl.scrollHeight + "px";
+                    requestAnimationFrame(() => {
+                        prevEl.style.height = "0px";
+                    });
+                }
+            }
+
+            // OPEN (like slideDown)
+            currentEl.style.height = currentEl.scrollHeight + "px";
+
+            setActiveIndex(index);
+        }
+    };
+
 
     return (
         <>
@@ -345,6 +413,187 @@ export default function WhatWeDoPage() {
                 </div>
             </section>
 
+            <section className={styles.caseStudy}>
+                <div className={styles.caseOverlay} />
+
+                <div className={styles.caseContent}>
+                    <span className={styles.caseBadge}><span style={{ color: "red" }}>/</span> CASE STUDY</span>
+
+                    <h1 className={styles.caseTitle}>
+                        See how we implemented <br />
+                        Enterprise AI for
+                    </h1>
+                </div>
+
+                <div className={styles.action}>
+                    <button className={styles.readMore}>
+                        Read more
+                        <span className={styles.arrow}>→</span>
+                    </button>
+                </div>
+            </section>
+
+            <section className={styles.wrapper}>
+                <div className={styles.DoOverlay} />
+
+                <div className={styles.DoContainer}>
+                    <div className={styles.DoBadge}> <span style={{ color: "red" }}>/</span> WHO THIS IS FOR</div>
+
+                    <h1 className={styles.DoHeading}>
+                        See if this is the right fit for your <span>team</span>
+                    </h1>
+
+                    <div className={styles.DoGrid}>
+                        {/* LEFT DoCard */}
+                        <div className={styles.DoCard}>
+                            <h3>This is for you if ...</h3>
+                            <ul>
+                                <li>Need AI embedded in real decisions</li>
+                                <li>Operate in a regulated industry.</li>
+                                <li>
+                                    Want to scale across finance, HR, ops, or customer service.
+                                </li>
+                                <li>Are done experimenting and ready to build.</li>
+                            </ul>
+                            <div className={`${styles.testimonialblob} ${styles.bottomglow}`} />
+                        </div>
+
+
+                        {/* RIGHT SIDE */}
+                        <div className={styles.notForYou}>
+                            <h3>This is not for you if ...</h3>
+                            <ul>
+                                <li>
+                                    You’re only looking for a basic chatbot or a plug-and-play GPT
+                                    wrapper.
+                                </li>
+                                <li>
+                                    You don’t require governance, compliance, or audit trails in your
+                                    AI systems.
+                                </li>
+                                <li>
+                                    You’re experimenting casually with AI tools without a structured
+                                    implementation roadmap
+                                </li>
+                                <li>
+                                    You don’t need cross-system workflow orchestration or enterprise
+                                    knowledge integration.
+                                </li>
+                                <li>
+                                    You see AI as a side initiative rather than enterprise
+                                    infrastructure.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* <section className={styles.faqContainer}>
+                <div className={styles.faqHeader}>
+                    <span className={styles.faqBadge}>/ FAQ</span>
+                    <h2 className={styles.faqTitle}>
+                        Your questions, <span>answered</span>
+                    </h2>
+                </div>
+
+                <div className={styles.accordion}>
+                    {faqData.map((item, index) => {
+                        const isActive = activeIndex === index;
+                        return (
+                            <div
+                                key={index}
+                                className={`${styles.faqItem} ${isActive ? styles.active : ""
+                                    }`}
+                            >
+                                <div
+                                    className={styles.question}
+                                    onClick={() => toggle(index)}
+                                >
+                                    <p>{item.question}</p>
+                                    <img
+                                        src={
+                                            isActive
+                                                ? "/images/uparrow.png"
+                                                : "/images/downarrow.png"
+                                        }
+                                        alt="arrow"
+                                        className={styles.faqIcon}
+                                    />
+                                </div>
+
+                                <div
+                                    ref={(el) => {
+                                        contentRefs.current[index] = el;
+                                    }}
+                                    className={styles.answerWrapper}
+                                    style={{
+                                        height: isActive
+                                            ? contentRefs.current[index]?.scrollHeight + "px"
+                                            : "0px",
+                                    }}
+                                >
+                                    <div className={styles.answer}>
+                                        <p>{item.answer}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+            </section> */}
+
+            <section className={styles.faqContainer}>
+                <div className={styles.faqHeader}>
+                    <span className={styles.faqBadge}>/ FAQ</span>
+                    <h2 className={styles.faqTitle}>
+                        Your questions, <span>answered</span>
+                    </h2>
+                </div>
+
+                <div className={styles.accordion}>
+                    {faqData.map((item, index) => {
+                        const isActive = activeIndex === index;
+
+                        return (
+                            <div
+                                key={index}
+                                className={`${styles.faqItem} ${isActive ? styles.active : ""
+                                    }`}
+                            >
+                                <div
+                                    className={styles.question}
+                                    onClick={() => toggle(index)}
+                                >
+                                    <p>{item.question}</p>
+
+                                    <img
+                                        src={
+                                            isActive
+                                                ? "/images/uparrow.png"
+                                                : "/images/downarrow.png"
+                                        }
+                                        alt="arrow"
+                                        className={styles.faqIcon}
+                                    />
+                                </div>
+
+                                <div
+                                    ref={(el) => {
+                                        contentRefs.current[index] = el;
+                                    }}
+                                    className={styles.answerWrapper}
+                                    style={{ height: "0px" }}
+                                >
+                                    <div className={styles.answer}>
+                                        <p>{item.answer}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+            </section>
             <Footer />
         </>
     );
