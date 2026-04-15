@@ -7,7 +7,7 @@ import contextual from "../../../../public/images/contextual.png"
 import governed from "../../../../public/images/governed.png"
 import scalable from "../../../../public/images/scalable.png"
 import outcomes from "../../../../public/images/outcomes.png"
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Footer from "../footer";
 
 const cards = [
@@ -122,6 +122,44 @@ const faqData = [
     },
 ];
 
+const steps = [
+    {
+        id: "01",
+        // title: "Enterprise AI-readiness & Risk Assessment",
+        image: "/images/01.png",
+        description:
+            "Enterprise AI-readiness & Risk Assessment - Our team finds the right use cases. Check infrastructure and governance gaps.",
+    },
+    {
+        id: "02",
+        // title: "Knowledge Architecture & Design",
+        image: "/images/02.png",
+        description:
+            "Knowledge Architecture & Design - Includes Data Estate Mapping, Knowledge Graph Construction, ERP/CRM Integrations. Create a unified intelligence layer.",
+    },
+    {
+        id: "03",
+        // title: "AI Model & Agent Deployment with Orchestration",
+        image: "/images/03.png",
+        description:
+            "AI Model & Agent Deployment with Orchestration - Gen AI Model integrations and fine-tuning, domain specific AI Agent design, Copilot deployment by function, multi-system workflow.",
+    },
+    {
+        id: "04",
+        // title: "Governance and Transparency",
+        image: "/images/04.png",
+        description:
+            "Governance and Transparency - Implement Role based access controls, audit logging and data lineage tracking, ethical AI policies, provide encryption and data sovereignty controls.",
+    },
+    {
+        id: "05",
+        // title: "Continuous learning and scaling",
+        image: "/images/05.png",
+        description:
+            "Continuous learning and scaling - Performance monitoring dashboards. Close feedback loops. Grow AI across the enterprise.",
+    },
+];
+
 export default function WhatWeDoPage() {
 
     const logos = [
@@ -170,6 +208,81 @@ export default function WhatWeDoPage() {
             setActiveIndex(index);
         }
     };
+
+    const sectionRef = useRef<HTMLDivElement | null>(null);
+    const lineRef = useRef<HTMLDivElement | null>(null);
+    const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [lineHeight, setLineHeight] = useState(0);
+    const [startOffset, setStartOffset] = useState(0);
+    const [lineStart, setLineStart] = useState(0);
+    const [lineEnd, setLineEnd] = useState(0);
+
+    useEffect(() => {
+        const section = sectionRef.current;
+        if (!section) return;
+
+        const handleScroll = () => {
+            const windowH = window.innerHeight;
+
+            const firstCard = cardRefs.current[0];
+            const lastCard = cardRefs.current[cardRefs.current.length - 1];
+
+            if (!firstCard || !lastCard || !lineRef.current) return;
+
+            const firstRect = firstCard.getBoundingClientRect();
+            const lastRect = lastCard.getBoundingClientRect();
+
+            // 👉 center positions
+            const startY = firstRect.top + firstRect.height / 2;
+            const endY = lastRect.top + lastRect.height / 2;
+
+            const totalDistance = endY - startY;
+
+            const containerRect = lineRef.current.getBoundingClientRect();
+
+            // start (first card center)
+            const startOffset = startY - containerRect.top;
+
+            // end (last card center)
+            const endOffset = endY - containerRect.top;
+
+            setStartOffset(startOffset);
+            setLineStart(startOffset);
+            setLineEnd(endOffset);
+
+            // scroll progress (starts only when first card hits center)
+            const progress = Math.min(
+                1,
+                Math.max(0, (windowH * 0.5 - startY) / totalDistance)
+            );
+
+            // set line height
+            setLineHeight(progress * totalDistance);
+
+            // active card detection
+            let newActive = 0;
+
+            cardRefs.current.forEach((card, i) => {
+                if (!card) return;
+
+                const rect = card.getBoundingClientRect();
+                const cardCenter = rect.top + rect.height / 2;
+
+                // 👉 activate ONLY when red line crosses card center
+                if (windowH * 0.5 >= cardCenter) {
+                    newActive = i;
+                }
+            });
+
+            setCurrentIndex(newActive);
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll();
+
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
 
     return (
@@ -430,6 +543,71 @@ export default function WhatWeDoPage() {
                         Read more
                         <span className={styles.arrow}>→</span>
                     </button>
+                </div>
+            </section>
+
+            <section ref={sectionRef} className={styles.processSection}>
+                <div className={styles.processContainer}>
+                    <div className={styles.processLeft}>
+                        <span className={styles.processBadge}><span style={{ color: "red" }}>/</span> PROCESS</span>
+                        <h2 className={styles.processHeading}>
+                            How it <em>Works</em>
+                        </h2>
+                        <p className={styles.subtext}>
+                            Here is our unified 5-stage AI implementation framework~
+                        </p>
+                    </div>
+
+                    <div className={styles.processRight}>
+                        <div ref={lineRef}
+                            className={styles.track}
+                            style={{
+                                "--line-start": `${lineStart}px`,
+                                "--line-end": `${lineEnd}px`,
+                            } as React.CSSProperties}>
+                            <div
+                                className={styles.trackFill}
+                                style={{
+                                    height: `${lineHeight}px`,
+                                    top: `${startOffset}px`, // 👈 ADD THIS
+                                }}
+                            />
+                        </div>
+                        <div className={styles.cards}>
+                            {steps.map((step, i) => (
+                                <div key={step.id} className={styles.cardRow}>
+
+                                    <div
+                                        className={`${styles.dot} ${i <= currentIndex ? styles.dotActive : ""}`}
+                                    />
+
+                                    <div
+                                        ref={(el) => {
+                                            cardRefs.current[i] = el;
+                                        }}
+                                        className={`${styles.processCard} ${i <= currentIndex ? styles.cardActive : ""
+                                            }`}
+                                    >
+                                        <div className={styles.cardInner}>
+                                            <p className={styles.cardDesc}>{step.description}</p>
+                                        </div>
+
+                                        <span className={styles.cardNumber}>
+                                            {/* {step.id} */}
+
+                                            <Image
+                                                src={step.image}
+                                                alt={`step-${step.id}`}
+                                                width={50}
+                                                height={50}
+                                                className={styles.stepImage}
+                                            />
+                                        </span>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </section>
 
