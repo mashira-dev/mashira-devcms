@@ -1,10 +1,14 @@
+"use client"
 import Link from "next/link";
 import "./navbar.css";
 import Image from "next/image";
 import logo from "@/assets/images/mashiralogo.png"
 import rightUp from "@/assets/images/solar_arrow-up-linear.png"
+import { useState } from "react";
 
 export default function FrontendLayout() {
+
+    const [menuOpen, setMenuOpen] = useState(false);
 
     return (
         <header className="navbar">
@@ -14,10 +18,18 @@ export default function FrontendLayout() {
                     className="logo"
                     alt="Logo"
                     width={120}
-                // height={40}
                 />
             </Link>
-            <nav className="right-nav">
+            <div
+                className={`hamburger ${menuOpen ? "active" : ""}`}
+                onClick={() => setMenuOpen(!menuOpen)}
+            >
+                <span />
+                <span />
+                <span />
+            </div>
+
+            <nav className={`right-nav ${menuOpen ? "show" : ""}`}>
                 {/* <Link href="/">Home</Link> */}
                 <Link href="/who-we-are">Who We Are</Link>
                 <Link href="/what-we-do">What We Do</Link>

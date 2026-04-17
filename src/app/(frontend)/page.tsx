@@ -5,7 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import rightArrow from "../../../public/images/rightBlackA.png"
-import rightArrowHover from "../../../public/images/rightWhiteA.png";
+// import rightArrowHover from "../../../public/images/rightWhiteA.png";
+import rightArrowHover from "../../../public/images/rightarrowlineup.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 // import "swiper/css";
 import type { Swiper as SwiperType } from "swiper";
@@ -260,8 +261,8 @@ export default function HomePage() {
         <Navbar />
         <section className="hero">
           <div className="hero-content">
-            <p className="tag">
-              DIGITAL TRANSFORMATION. AI. DATA & INTELLIGENCE. CLOUD. MANAGEMENT
+            <p className="herotag">
+              <span style={{ color: "#FF3503" }}>/</span> DIGITAL TRANSFORMATION. AI. DATA & INTELLIGENCE. CLOUD. MANAGEMENT
             </p>
 
             <h1>
@@ -286,8 +287,8 @@ export default function HomePage() {
                   <Image
                     src={rightA}
                     alt="arrow"
-                    width="24"
-                    height="24"
+                    width="20"
+                    height="20"
                   />
                 </span>
               </button>
@@ -336,7 +337,7 @@ export default function HomePage() {
       <section className="whatwedo" ref={sectionRef}>
         <div className="wwd-track" ref={trackRef}>
           <div className="wwd-left-panel">
-            <div className="tag">/ WHAT WE DO</div>
+            <div className="tag"><span style={{ color: "#FF3503" }}>/</span> WHAT WE DO</div>
             <h1>
               From enterprise <br />
               complexity to <br />
@@ -370,7 +371,7 @@ export default function HomePage() {
               <h3>{svc.title}</h3>
               <p>{svc.description}</p>
 
-              <span
+              {/* <span
                 className="card-arrow"
                 onMouseEnter={() => setHoveredIndex(i)}
                 onMouseLeave={() => setHoveredIndex(null)}
@@ -379,7 +380,7 @@ export default function HomePage() {
                   src={hoveredIndex === i ? rightArrowHover : rightArrow}
                   alt="rightArrow"
                 />
-              </span>
+              </span> */}
             </div>
           ))}
         </div>
@@ -387,7 +388,7 @@ export default function HomePage() {
 
       <section className="services-section">
         <div className="badge">
-          / FUNCTION-FOCUSED SOLUTIONS
+          <span style={{ color: "#FF3503" }}>/</span> FUNCTION-FOCUSED SOLUTIONS
         </div>
 
         <h1 className="heading">

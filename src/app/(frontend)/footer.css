@@ -245,10 +245,10 @@
 
 /* ─── Responsive ──────────────────────────────── */
 @media (max-width: 768px) {
-    .hero {
+    /* .hero {
         padding: 60px 20px 40px;
         min-height: auto;
-    }
+    } */
 
     .hero__blob {
         width: 350px;
@@ -315,3 +315,47 @@
         border-bottom: 1px solid #eee;
     }
 }
+
+
+/* Very small devices */
+@media (max-width: 420px) {
+    .footer {
+        width: 100%;
+    }
+}
+
+/* Mobile small */
+@media (max-width: 576px) {
+    .footer {
+        width: 100%;
+    }
+}
+
+/* Mobile large */
+@media (max-width: 768px) {
+    .footer {
+        width: 100%;
+    }
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+    .footer {
+        width: 100%;
+    }
+}
+
+/* Laptop / tablet landscape */
+@media (max-width: 1200px) {
+    .partners-section {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* @media (max-width: 1400px) {
+  .partners-section{
+    display: flex;
+    flex-direction: column;
+  }
+} */
