@@ -154,8 +154,6 @@ body::-webkit-scrollbar {
   transform: translateY(-100%);
 }
 
-
-
 .btn__icon {
   display: flex;
   background: #FF3503;

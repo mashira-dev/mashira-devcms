@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Navbar from "../navbar";
-import styles from "./HeroSection.module.css";
+import styles from "./whatwedo.module.css";
 import contextual from "../../../../public/images/contextual.png"
 import governed from "../../../../public/images/governed.png"
 import scalable from "../../../../public/images/scalable.png"

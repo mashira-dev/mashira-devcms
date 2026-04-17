@@ -1,0 +1,1255 @@
+.hero {
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to right,
+            #f5f5f5,
+            #eaeaea,
+            #dddddd);
+    font-family: Arial, sans-serif;
+    background-image: url("/images/servicemain.png");
+}
+
+.container {
+    width: 90%;
+    /* max-width: 1200px; */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left {
+    flex: 1;
+}
+
+.title {
+    font-size: 48px;
+    font-weight: 400;
+    color: #222;
+    line-height: 1.2;
+}
+
+.title span {
+    font-style: italic;
+    font-weight: 300;
+    color: #444;
+}
+
+.button {
+    margin-top: 30px;
+    padding: 12px 20px;
+    background: #111;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.button:hover {
+    background: #333;
+}
+
+.arrow {
+    background: #ff3c00;
+    padding: 4px 8px;
+    margin-left: 8px;
+}
+
+.right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    top: 6rem;
+}
+
+.right p {
+    max-width: 400px;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* partners-section start */
+.partners-section {
+    display: flex;
+    width: 100%;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
+    background: #fff;
+}
+
+/* LEFT SIDE */
+.left-partners-section {
+    width: 60%;
+    padding: 20px 30px;
+}
+
+.left-partners-section h1 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: #666;
+}
+
+/* LOGO ITEM */
+.logo-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #999;
+    font-weight: 500;
+}
+
+/* MARQUEE */
+.marquee {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.marquee-content {
+    display: flex;
+    gap: 32px;
+    width: max-content;
+    animation: scroll 18s linear infinite;
+}
+
+/* RIGHT SIDE */
+.right-partners-section {
+    width: 40%;
+    display: flex;
+}
+
+.stat-box {
+    flex: 1;
+    text-align: left;
+    padding: 20px;
+    border-left: 1px solid #e7e7e7;
+}
+
+.stat-box h2 {
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #111;
+}
+
+.stat-box p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* ANIMATION */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* partners-section end */
+
+/* challenges start */
+.section {
+    background: #FAFAFA;
+    padding: 60px;
+}
+
+.challengeContainer {
+    /* max-width: 1200px; */
+    margin: auto;
+}
+
+.header {
+    margin-bottom: 50px;
+}
+
+.subheading {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #777;
+    border: 1px solid #cfcfcf;
+    padding: 6px;
+    border-radius: 4px;
+    width: 12%;
+}
+
+.heading {
+    font-size: 42px;
+    font-weight: 300;
+    margin: 28px 0;
+    color: #111;
+}
+
+.heading span {
+    font-style: italic;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+/* CARD */
+.card {
+    position: relative;
+    background: white;
+    border: 1px solid #e5e5e5;
+    padding: 28px;
+    min-height: 260px;
+    overflow: hidden;
+    cursor: pointer;
+    height: 20rem;
+}
+
+/* CONTENT */
+.content {
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s ease;
+}
+
+/* ICON + TEXT DEFAULT */
+.icon {
+    color: #111;
+    margin-bottom: 16px;
+    transition: color 0.3s ease;
+}
+
+.challengetitle {
+    font-size: 16px;
+    font-weight: 500;
+    color: #111;
+    /* margin-bottom: 10px; */
+    margin: 4rem 0px 2rem 0;
+    transition: color 0.3s ease;
+}
+
+.desc {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+    transition: color 0.3s ease;
+}
+
+/* OVERLAY BACKGROUND ONLY */
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: black;
+    height: 0%;
+    transition: height 0.4s ease;
+    z-index: 1;
+}
+
+/* HOVER EFFECT */
+.card:hover .overlay {
+    height: 100%;
+}
+
+/* TEXT COLOR CHANGE (no content movement) */
+.card:hover .icon,
+.card:hover .challengetitle,
+.card:hover .desc {
+    color: white;
+}
+
+/* Slight softer paragraph white */
+.card:hover .desc {
+    color: #ccc;
+}
+
+/* Wrapper */
+.iconWrapper {
+    position: relative;
+    width: 28px;
+    height: 28px;
+    margin-bottom: 16px;
+}
+
+/* Both images stacked */
+.iconDefault,
+.iconHover {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Default visible */
+.iconDefault {
+    opacity: 1;
+}
+
+/* Hover hidden initially */
+.iconHover {
+    opacity: 0;
+    transform: translateY(6px);
+}
+
+/* Hover swap */
+.card:hover .iconDefault {
+    opacity: 0;
+    transform: translateY(-6px);
+}
+
+.card:hover .iconHover {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .heading {
+        font-size: 30px;
+    }
+}
+
+/* challenges end */
+
+/* approachContainer start */
+
+.approachContainer {
+    /* background-color: linear-gradient(120deg, #111 0%, #1a1a1a 100%); */
+    background-image: url("/images/enterpriseBck.png");
+    color: #fff;
+    height: 90vh;
+    padding: 60px;
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.containers {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    width: 100%;
+}
+
+.badge {
+    display: inline-block;
+    font-size: 12px;
+    border: 1px solid #cfcfcf;
+    padding: 6px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.appleft h1 {
+    font-size: 44px;
+    line-height: 1.3;
+    margin: 2rem 0;
+    font-weight: 400;
+}
+
+.appleft p {
+    color: #aaa;
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 520px;
+}
+
+.appleft h3 {
+    margin-top: 40px;
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.italic {
+    font-style: italic;
+    font-family: serif;
+}
+
+.appright h4 {
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+.item {
+    display: flex;
+    gap: 15px;
+    padding: 26px 0;
+    border-bottom: 1px solid #333;
+    border-top: 1px solid #333;
+}
+
+.item:last-child {
+    border-bottom: none;
+}
+
+.appicon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+}
+
+.item h5 {
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.item p {
+    font-size: 14px;
+    color: #aaa;
+    line-height: 1.5;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .approachContainer {
+        padding: 60px 20px;
+    }
+
+    .appleft h1 {
+        font-size: 32px;
+    }
+}
+
+/* approachContainer ends */
+
+
+/* services start */
+
+.serviceSection {
+    background-color: #F5F5F5;
+    padding: 70px 50px;
+    width: 100%;
+}
+
+.serviceContainer {
+    width: auto;
+    margin: 0 auto;
+}
+
+.serviceHeading {
+    text-align: center;
+    font-family: "Georgia", serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 400;
+    color: #1a1a1a;
+    letter-spacing: -0.5px;
+    margin: 0 0 8px;
+}
+
+.headingItalic {
+    font-style: italic;
+    font-weight: 400;
+}
+
+.connectorWrapper {
+    position: relative;
+    height: 80px;
+    margin-bottom: 0;
+}
+
+.connectorDot {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: #FF3503;
+    border-radius: 50%;
+}
+
+.connectorVertical {
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 76px;
+    background-color: #FF3503;
+}
+
+.connectorHorizontal {
+    position: absolute;
+    top: 50px;
+    left: calc(16.6667% + 1px);
+    right: calc(16.6667% + 1px);
+    height: 1px;
+    background-color: #FF3503;
+}
+
+.connectorBranchLeft,
+.connectorBranchCenter,
+.connectorBranchRight {
+    position: absolute;
+    top: 50px;
+    width: 1.5px;
+    height: 32px;
+    background-color: #FF3503;
+}
+
+.connectorBranchLeft {
+    left: calc(16.6667% + 1px);
+}
+
+.connectorBranchCenter {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.connectorBranchRight {
+    right: calc(16.6667% + 1px);
+}
+
+/* ── Card grid ── */
+.servicegrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+
+@media (max-width: 860px) {
+    .servicegrid {
+        grid-template-columns: 1fr;
+    }
+
+    .connectorWrapper {
+        display: none;
+    }
+}
+
+/* ── Individual card ── */
+.serviceCard {
+    background-color: #ffffff;
+    border: 1px solid #e8e6e1;
+    border-radius: 4px;
+    padding: 32px 28px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    height: 587px;
+}
+
+.serviceIconWrapper {
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.cardTitle {
+    font-family: "Georgia", serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 16px 0;
+    letter-spacing: -0.2px;
+    line-height: 1.3;
+}
+
+.cardDescription {
+    font-size: 13px;
+    line-height: 1.65;
+    color: #555550;
+    margin: 16px 0;
+}
+
+.bulletList {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.bulletItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: #3a3a38;
+}
+
+.bulletSquare {
+    flex-shrink: 0;
+    margin-top: 5px;
+    width: 7px;
+    height: 7px;
+    background-color: #FF3503;
+    border-radius: 1px;
+}
+
+/* services end */
+
+/* case study starts */
+
+.caseStudy {
+    position: relative;
+    width: 100%;
+    /* height: 320px; */
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+
+    /* Background Image */
+    background-image: url("/images/casestudy.png");
+    /* <-- add your image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.caseOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+            rgba(20, 20, 20, 0.9) 0%,
+            rgba(20, 20, 20, 0.7) 50%,
+            rgba(255, 80, 0, 0.2) 100%);
+    z-index: 1;
+}
+
+.caseContent {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+}
+
+.caseBadge {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 1px;
+    padding: 6px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    margin-bottom: 16px;
+    color: #ddd;
+}
+
+.caseTitle {
+    font-size: 42px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0;
+}
+
+/* Right side button */
+.action {
+    position: relative;
+    z-index: 2;
+}
+
+.readMore {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 10px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.readMore:hover {
+    background: #f2f2f2;
+}
+
+.arrow {
+    background: #ff4d00;
+    color: #fff;
+    padding: 6px 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* case study Ends */
+
+/* DO's section start */
+
+
+.wrapper {
+    position: relative;
+    /* min-height: 100vh; */
+    padding: 60px 20px;
+    background: radial-gradient(circle at bottom, #2a0f08, #0c0c0c 60%);
+    color: #fff;
+    background-image: url("/images/enterpriseBck.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+/* optional grain DoOverlay */
+.DoOverlay {
+    position: absolute;
+    inset: 0;
+    /* background: url("/bg-texture.png"); */
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+.DoContainer {
+    max-width: 1100px;
+    margin: auto;
+    text-align: center;
+}
+
+.DoBadge {
+    display: inline-block;
+    font-size: 12px;
+    border: 1px solid #555;
+    padding: 6px 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.DoHeading {
+    font-size: 42px;
+    font-weight: 500;
+    margin-bottom: 60px;
+}
+
+.DoHeading span {
+    font-style: italic;
+    color: #ddd;
+}
+
+.DoGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* gap: 40px; */
+    text-align: left;
+}
+
+/* LEFT DoCard */
+.DoCard {
+    position: relative;
+    padding: 30px;
+    border: 1px solid #333;
+    background: linear-gradient(180deg,
+            rgba(20, 20, 20, 0.9),
+            rgba(10, 10, 10, 0.95));
+    border-radius: 6px;
+    overflow: hidden;
+    width: 500px;
+    height: 500px;
+}
+
+/* bottom glow */
+.DoCard::after {
+    content: "";
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    /* background: radial-gradient(circle, rgba(255, 80, 20, 0.5), transparent 70%); */
+}
+
+.DoCard h3 {
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.DoCard ul {
+    list-style: none;
+    padding: 0;
+}
+
+.DoCard li {
+    margin: 40px 0;
+    position: relative;
+    padding-left: 28px;
+}
+
+/* check icon */
+.DoCard li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    /* top: 4px; */
+    width: 18px;
+    height: 18px;
+    background: url("/images/tick.png") no-repeat center;
+    background-size: contain;
+}
+
+.notForYou {
+    margin: 30px 0;
+}
+
+/* RIGHT SIDE */
+.notForYou h3 {
+    margin-bottom: 50px;
+    font-size: 18px;
+}
+
+.notForYou ul {
+    list-style: none;
+    padding: 0;
+}
+
+.notForYou li {
+    margin: 30px 0;
+    position: relative;
+    padding-left: 28px;
+    color: #fff;
+}
+
+/* cross icon */
+.notForYou li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    /* top: 4px; */
+    width: 18px;
+    height: 18px;
+    background: url("/images/cross.png") no-repeat center;
+    background-size: contain;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .DoGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .DoHeading {
+        font-size: 30px;
+    }
+}
+
+.testimonialblob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(70px);
+    pointer-events: none;
+}
+
+.bottomglow {
+    background: #ff3503;
+    width: 260px;
+    height: 260px;
+    /* bottom: -120px; */
+    left: 70%;
+}
+
+/* DO's section end */
+
+/* faq */
+.faqContainer {
+    padding: 60px 40px;
+    background: #fff;
+    margin: auto;
+}
+
+.faqHeader {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.faqBadge {
+    display: inline-block;
+    font-size: 12px;
+    padding: 6px 12px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    color: #555;
+}
+
+.faqTitle {
+    font-size: 36px;
+    font-weight: 500;
+    color: #222;
+}
+
+.faqTitle span {
+    font-style: italic;
+    font-family: serif;
+}
+
+/* Accordion */
+.accordion {
+    width: 100%;
+}
+
+.faqItem {
+    border-bottom: 1px solid #ddd;
+    /* transition: all 0.5s ease; */
+}
+
+/* Active (dark block like your UI) */
+.active {
+    background: #2b2b2b;
+    color: #fff;
+    margin-bottom: 10px;
+    /* padding: 10px 20px; */
+}
+
+.question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 18px 36px;
+    font-size: 16px;
+    height: 90px;
+}
+
+.active .question {
+    color: #fff;
+}
+
+.faqIcon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+/* Remove old animation */
+.answer {
+    padding: 0 10px 20px;
+    opacity: 1;
+    max-height: none;
+    padding: 0 0 20px 36px;
+    width: 60%;
+}
+
+.answerWrapper {
+    overflow: hidden;
+    height: 0;
+    transition: height 0.35s ease;
+}
+
+.show {
+    max-height: 200px;
+    opacity: 1;
+    padding: 0 10px 20px;
+}
+
+.answer p {
+    font-size: 14px;
+    color: #ccc;
+}
+
+.faqItem:not(.active) .answer p {
+    color: #666;
+}
+
+/* faq ends */
+
+/* process css start */
+.processSection {
+    /* min-height: 100vh; */
+    background-color: #EEEEEE;
+    padding: 75px 50px 60px 60px;
+    font-family: "DM Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ── Layout ──────────────────────────────────── */
+.processContainer {
+    /* max-width: 900px; */
+    margin: 0 auto;
+    /* padding: 0 32px; */
+    display: flex;
+    gap: 80px;
+    align-items: flex-start;
+}
+
+.processLeft {
+    width: 40%;
+    position: relative;
+}
+
+.processRight {
+    /* flex: 1; */
+    /* top: 10rem; */
+    margin-top: 10rem;
+    display: flex;
+    gap: 24px;
+    position: relative;
+}
+
+/* ── Left column ─────────────────────────────── */
+.processBadge {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #555;
+    background: #fff;
+    line-height: 20px;
+    border-radius: 8px;
+    border: 1px solid #cfcfcf;
+    padding: 8px 16px;
+    margin-bottom: 20px;
+}
+
+.processHeading {
+    font-family: "DM Serif Display", Georgia, serif;
+    font-size: 52px;
+    font-weight: 400;
+    line-height: 1.1;
+    color: #2b2b2d;
+    margin: 0 0 16px;
+}
+
+.processHeading em {
+    font-style: italic;
+    font-family: "DM Serif Display", Georgia, serif;
+}
+
+.subtext {
+    font-size: 24px;
+    color: #5d5d5d;
+    line-height: 1.6;
+    margin: 0;
+    width: 32rem;
+    /* max-width: 180px; */
+}
+
+/* ── Timeline track ──────────────────────────── */
+.track {
+    /* position: relative; */
+    position: absolute;
+    left: -34px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    flex-shrink: 0;
+    /* Spans the full height of the cards column */
+    align-self: stretch;
+    margin-top: 8px;
+}
+
+.stepImage {
+    display: block;
+    margin-top: 6px;
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+/* Grey background track */
+.track::before {
+    /* content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: #ccc;
+    border-radius: 2px; */
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: var(--line-start);
+    height: calc(var(--line-end) - var(--line-start));
+    border-left: 2px dotted #cfcfcf;
+}
+
+/* Animated red fill */
+.trackFill {
+    /* position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    background: #FF3503;
+    border-radius: 2px;
+    transition: height 0.08s linear;
+    z-index: 1; */
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    background: #FF3503;
+    transition: height 0.1s linear;
+    z-index: 1;
+}
+
+/* Dots */
+/* .dot {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: #bbb;
+    z-index: 2;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.dotActive {
+    background: #FF3503;
+    transform: translate(-50%, -50%) scale(1.15);
+} */
+
+.dot {
+    position: absolute;
+    left: -34px;
+    /* distance from card */
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background: #d0d0d0;
+}
+
+.dotActive {
+    background: #FF3503;
+    transform: translate(-50%, 0) scale(1.2);
+}
+
+.cardRow {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.cardRow .dot {
+    position: absolute;
+    left: -34px;
+    /* distance from card */
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* ── Cards column ────────────────────────────── */
+.cards {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.processCard {
+    position: relative;
+    background: #FFFFFF;
+    border: 1px solid #E7E7E7;
+    border-radius: 4px;
+    padding: 50px 30px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    opacity: 0.55;
+    transform: translateX(8px);
+    transition:
+        opacity 0.45s ease,
+        transform 0.45s ease,
+        background 0.4s ease,
+        box-shadow 0.4s ease;
+    min-height: 90px;
+    width: 800px;
+}
+
+.cardActive {
+    opacity: 1;
+    transform: translateX(0);
+    background: #f9f9f9;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* First card always visible */
+.processCard:first-child {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.cardInner {
+    flex: 1;
+}
+
+.processCardTitle {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 6px;
+    line-height: 1.5;
+}
+
+.titleDash {
+    color: #FF3503;
+}
+
+.cardDesc {
+    color: #2b2b2d;
+    margin: 0;
+    font-size: 20px;
+    line-height: 100%;
+    font-weight: 400;
+}
+
+.cardNumber {
+    position: absolute;
+    bottom: -8px;
+    right: 18px;
+    font-size: 28px;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.07);
+    line-height: 1;
+    font-family: "DM Serif Display", Georgia, serif;
+    user-select: none;
+    letter-spacing: -0.02em;
+}
+
+/* ── Responsive ──────────────────────────────── */
+@media (max-width: 700px) {
+    .processContainer {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .processLeft {
+        position: static;
+        flex: none;
+    }
+}
+
+/* process css end */
