@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 // import rightA from "../../../public/images/rightArrow.png"
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import rightArrow from "../../../public/images/rightBlackA.png"
@@ -56,22 +56,22 @@ const enterprises = [
   {
     title: "Finance and Accounting",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
-    icon: "/images/functionSol1.png",
+    icon: "/images/solution-1.svg",
   },
   {
     title: "Sales and Marketing",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
-    icon: "/images/functionSol2.png",
+    icon: "/images/solution-2.svg",
   },
   {
     title: "HR and Workforce",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
-    icon: "/images/functionSol3.png",
+    icon: "/images/solution-3.svg",
   },
   {
     title: "Operational Effectiveness Solution",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
-    icon: "/images/functionSol4.png",
+    icon: "/images/solution-4.svg",
   },
 ];
 
@@ -206,11 +206,11 @@ export default function HomePage() {
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const section = sectionRef.current;
     const track = trackRef.current;
 
-    if (!section || !track) return; // ✅ IMPORTANT FIX
+    if (!section || !track) return;
 
     const getScrollAmount = () =>
       -(track.scrollWidth - window.innerWidth);
@@ -231,7 +231,10 @@ export default function HomePage() {
       });
     }, section);
 
-    return () => ctx.revert();
+    return () => {
+      ScrollTrigger.getAll().forEach((st) => st.kill(false));
+      ctx.revert();
+    };
   }, []);
 
   useEffect(() => {
@@ -392,8 +395,8 @@ export default function HomePage() {
         </div>
 
         <h1 className="heading">
-          Mashira enables enterprises to reimagine how they{" "}
-          <span>Operate, Adapt, Innovate and Scale.</span>
+          Mashira enables enterprises to reimagine how they{" "}<br />
+          <span className="italic">Operate, Adapt, Innovate and Scale.</span>
         </h1>
 
         <div className="cards">
@@ -420,7 +423,7 @@ export default function HomePage() {
       <section className="blog-section">
         <div className="blog-header">
           <div>
-            <span className="blog-tag">// INSIGHTS</span>
+            <span className="tag"><span style={{ color: "#FF3503" }}>/</span> INSIGHTS</span>
             <h2 className="blog-title">
               Latest from our <em>Blog</em>
             </h2>
@@ -519,7 +522,7 @@ export default function HomePage() {
       <section className={styles.section}>
 
         <div className={styles.left}>
-          <div className={styles.eyebrow}>/ Why Mashira</div>
+          <span className="tag"><span style={{ color: "#FF3503" }}>/</span> WHY MASHIRA</span>
 
           <h2 className={styles.headline}>
             An all-weather, <em>Stable</em> and<br />
@@ -565,9 +568,9 @@ export default function HomePage() {
         <div className="testimonials-overlay" />
 
         <div className="testimonials-header">
-          <span className="testimonials-badge">/ TESTIMONIALS</span>
+          <span className="testimonials-badge"><span style={{ color: "#FF3503" }}>/</span> TESTIMONIALS</span>
           <h2 className="testimonials-title">
-            Real <span>Results</span> from Real <span>Clients</span>
+            Real <span className="italic">Results</span> from Real <span className="italic">Clients</span>
           </h2>
         </div>
 

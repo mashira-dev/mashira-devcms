@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import mashiraFrame from "../../../public/images/mashira-frame.png";
+import mashiraFrame from "../../../public/images/mashira-footer.svg";
+import mashiraLogo from "../../../public/images/mashira-logo.svg";
 import "./footer.css"
 
 export default function Footer() {
@@ -57,8 +58,14 @@ export default function Footer() {
                 <footer className={`footer ${visible ? "footer-visible" : "footer-hidden"}`}>
                     <div className="footer-top">
                         <div>
-                            <div className="brand-title">mashira</div>
-                            <p className="brand-text">
+                            <div className="brand-title">
+                                <Image
+                                    src={mashiraLogo}
+                                    alt="Mashira"
+                                    className="brand-logo"
+                                    priority
+                                />
+                            </div>                            <p className="brand-text">
                                 Your trusted implementation partner for enterprise AI transformation...
                             </p>
                             <a href="#" className="linkedin-btn">

@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: var(--font-hanken-grotesk), sans-serif;
   color: #222;
   overflow-y: scroll;
   scrollbar-width: none;
@@ -95,7 +95,6 @@ body::-webkit-scrollbar {
 
 .hero .italic {
   font-style: italic;
-  font-family: serif;
 }
 
 .description {
@@ -263,7 +262,6 @@ body::-webkit-scrollbar {
    ────────────────────────────────────────── */
 
 .whatwedo {
-  font-family: "Inter", sans-serif;
   background-color: #FAFAFA;
   background-image: url("/images/Ellipse.png");
   background-repeat: no-repeat;
@@ -321,9 +319,11 @@ body::-webkit-scrollbar {
   margin: 0 0 48px;
 }
 
+em,
+i,
 .italic {
+  font-family: var(--font-playfair), serif;
   font-style: italic;
-  font-weight: 400;
 }
 
 /* ── BUTTON ─────────────────────────────── */
@@ -437,11 +437,12 @@ body::-webkit-scrollbar {
 }
 
 .heading {
-  max-width: 800px;
+  letter-spacing: -0.02em;
+  text-align: center;
   margin: 0 auto;
-  font-size: 32px;
+  font-size: 52px;
   font-weight: 300;
-  line-height: 1.6;
+  line-height: 70px;
 }
 
 .heading span {
@@ -632,7 +633,6 @@ body::-webkit-scrollbar {
 
 .blog-title em {
   font-style: italic;
-  font-family: serif;
 }
 
 .view-all-btn {
@@ -810,7 +810,6 @@ body::-webkit-scrollbar {
 
 .blog-title em {
   font-style: italic;
-  font-family: serif;
 }
 
 .view-all-btn {
@@ -1008,7 +1007,6 @@ body::-webkit-scrollbar {
 
 .testimonials-title span {
   font-style: italic;
-  font-family: serif;
   font-weight: 400;
 }
 
@@ -1017,7 +1015,7 @@ body::-webkit-scrollbar {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1180px;
+  max-width: 1500px;
   display: grid;
   grid-template-columns: 1.65fr 0.95fr;
   gap: 24px;
@@ -1385,7 +1383,7 @@ body::-webkit-scrollbar {
     font-size: 40px;
   }
 
-  .description{
+  .description {
     width: 100%;
   }
 
