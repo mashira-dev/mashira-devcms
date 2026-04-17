@@ -174,7 +174,7 @@ export default function HomePage() {
   const [direction, setDirection] = useState("next");
   const [currentValue, setCurrentValue] = useState(0);
   const [imageVisible, setImageVisible] = useState(true);
-  const rowRefs = useRef<(HTMLLIElement | null)[]>([]);
+  const whySectionRef = useRef<HTMLElement | null>(null);
 
   const redirect = (dir: any) => {
     if (animating) return;
@@ -237,25 +237,46 @@ export default function HomePage() {
     };
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const trigger = window.innerHeight * 0.5;
-      let next = 0;
-      rowRefs.current.forEach((ref, i) => {
-        if (ref && ref.getBoundingClientRect().top <= trigger) next = i;
-      });
-      setActiveIndex((prev) => {
-        if (prev !== next) {
-          setImageVisible(false);
-          setTimeout(() => setImageVisible(true), 220);
-          return next;
-        }
-        return prev;
-      });
-    };
+  useLayoutEffect(() => {
+    const whySection = whySectionRef.current;
+    if (!whySection) return;
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    const totalItems = sections.length; // 4
+
+    const ctx = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: whySection,
+        start: "top top",
+        // Each item gets one viewport-height of scroll budget
+        end: () => `+=${(totalItems - 1) * window.innerHeight}`,
+        pin: true,
+        scrub: 1,
+        snap: {
+          snapTo: 1 / (totalItems - 1),
+          duration: { min: 0.2, max: 0.4 },
+          ease: "power1.inOut",
+        },
+        onUpdate: (self) => {
+          const index = Math.min(
+            Math.round(self.progress * (totalItems - 1)),
+            totalItems - 1
+          );
+          setActiveIndex((prev) => {
+            if (prev !== index) {
+              setImageVisible(false);
+              setTimeout(() => setImageVisible(true), 220);
+              return index;
+            }
+            return prev;
+          });
+        },
+      });
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((st) => st.kill(false));
+      ctx.revert();
+    };
   }, []);
 
   return (
@@ -519,7 +540,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={styles.section}>
+      <section className={styles.section} ref={whySectionRef}>
 
         <div className={styles.left}>
           <span className="tag"><span style={{ color: "#FF3503" }}>/</span> WHY MASHIRA</span>
@@ -533,9 +554,6 @@ export default function HomePage() {
             {sections.map((sec, i) => (
               <li
                 key={sec.id}
-                ref={(el) => {
-                  rowRefs.current[i] = el;
-                }}
                 className={`${styles.row}${activeIndex === i ? " " + styles.active : ""}`}
               >
                 <Image
