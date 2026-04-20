@@ -11,42 +11,58 @@ import Footer from "../footer";
 
 const cards = [
     {
-        iconDefault: "/images/ai-brain-02-black.png",
-        iconHover: "/images/ai-brain.png",
+        iconDefault: "/images/chart-02.svg",
+        iconHover: "/images/chart-02-ai.svg",
         title:
-            "You already know AI works. The problem is getting it to work for you.",
-        desc: "These are the conversations we have with technology leaders every week before they start working with us.",
+            "Digital Maturity Assessment",
+        desc: "Assess the maturity of your organization in people, processes, and technology. Understand where you stand as an enterprise today and what would be required to continue growing.",
     },
     {
-        iconDefault: "/images/blockchain-04-black.png",
-        iconHover: "/images/blockchain-04.png",
-        title: "Endless Pilots, Zero Production",
-        desc: "Three POCs. Zero in production. The gap between demo and deployment is where AI investments die.",
+        iconDefault: "/images/artificial-intelligence-07.svg",
+        iconHover: "/images/artificial-intelligence-07-ai.svg",
+        title: "AI, Automation & Innovation Discovery",
+        desc: "Identify impactful applications for AI, automation, and innovative business process design that are scoped specifically for your industry and organization and deliverable in 12 months or less.",
     },
     {
-        iconDefault: "/images/ai-lock-black.png",
-        iconHover: "/images/ai-lock.png",
-        title: "Knowledge Locked in Silos",
-        desc: "It lives in Confluence, SharePoint, legacy docs, and people’s heads. No one can access it when it matters.",
+        iconDefault: "/images/chart-relationship.svg",
+        iconHover: "/images/chart-relationship-ai.svg",
+        title: "Change Readiness & Stakeholder Alignment",
+        desc: "Conduct facilitated workshops to align your executive stakeholders on the strategy that will be developed so that the necessary funding and execution will take place.",
+    },
+    // {
+    //     iconDefault: "/images/user-ai-black.png",
+    //     iconHover: "/images/user-ai.png",
+    //     title: "Manual efforts made where automation should exist",
+    //     desc: "Data extraction. Report generation. Query routing. Your best people doing tasks AI should handle.",
+    // },
+    // {
+    //     iconDefault: "/images/security-block-black.png",
+    //     iconHover: "/images/security-block.png",
+    //     title: "No Guardrails",
+    //     desc: "AI drafts a client document. It goes out unchecked. No governance means no control.",
+    // },
+    // {
+    //     iconDefault: "/images/artificial-intelligence-08-black.png",
+    //     iconHover: "/images/artificial-intelligence-08.png",
+    //     title: "Generic AI Doesn't Know Your Business",
+    //     desc: "Off-the-shelf tools give off-the-shelf answers. They don’t know your business. Ours does.",
+    // },
+];
+
+const topcards = [
+    {
+        iconDefault: "/images/route-01.svg",
+        iconHover: "/images/route-01-ai.svg",
+        title:
+            "Technology Assessment & Road mapping",
+        desc: "First, we look at what you already have and figure out where there are gaps, redundancies, and missed chances in your current technology landscape. Then, we make a prioritized roadmap that shows you how to spend your money.",
     },
     {
-        iconDefault: "/images/user-ai-black.png",
-        iconHover: "/images/user-ai.png",
-        title: "Manual efforts made where automation should exist",
-        desc: "Data extraction. Report generation. Query routing. Your best people doing tasks AI should handle.",
-    },
-    {
-        iconDefault: "/images/security-block-black.png",
-        iconHover: "/images/security-block.png",
-        title: "No Guardrails",
-        desc: "AI drafts a client document. It goes out unchecked. No governance means no control.",
-    },
-    {
-        iconDefault: "/images/artificial-intelligence-08-black.png",
-        iconHover: "/images/artificial-intelligence-08.png",
-        title: "Generic AI Doesn't Know Your Business",
-        desc: "Off-the-shelf tools give off-the-shelf answers. They don’t know your business. Ours does.",
-    },
+        iconDefault: "/images/dashboard-square-01.svg",
+        iconHover: "/images/dashboard-square-01-ai.svg",
+        title: "Microsoft Platform Strategy",
+        desc: "Your Microsoft platform licenses likely aren't being maximized. We assist in maximizing your current investment - Azure, Power Platform, Microsoft 365, Dynamics 365, Copilot and more to plan out an effective roadmap for future growth.",
+    }
 ];
 
 const services = [
@@ -286,7 +302,6 @@ export default function WhatWeDoPage() {
 
     return (
         <>
-
             <section className={styles.hero}>
                 <div className={styles.container}>
                     {/* Left Content */}
@@ -313,13 +328,13 @@ export default function WhatWeDoPage() {
                 </div>
             </section>
 
-            <section className="partners-section">
-                <div className="left-partners-section">
+            <section className={styles.partnersSection}>
+                <div className={styles.leftPartnersSection}>
                     <h1>Trusted by</h1>
-                    <div className="marquee">
-                        <div className="marquee-content">
+                    <div className={styles.marquee}>
+                        <div className={styles.marqueeContent}>
                             {logos.concat(logos).map((logo, index) => (
-                                <div key={index} className="logo-item">
+                                <div key={index} className={styles.logoItem}>
                                     <Image
                                         src={logo.icon}
                                         alt={logo.name}
@@ -332,30 +347,60 @@ export default function WhatWeDoPage() {
                         </div>
                     </div>
                 </div>
-                <div className="right-partners-section">
-                    <div className="stat-box">
+                {/* <div className={styles.rightPartnersSection}>
+                    <div className={styles.statBox}>
                         <h2>8wks</h2>
                         <p>Average Deployment Time</p>
                     </div>
 
-                    <div className="stat-box">
+                    <div className={styles.statBox}>
                         <h2>4x</h2>
                         <p>Productivity Gains Across Clients Teams</p>
                     </div>
-                </div>
+                </div> */}
             </section>
 
             <section className={styles.section}>
                 <div className={styles.challengeContainer}>
                     {/* Heading */}
                     <div className={styles.header}>
-                        <p className={styles.subheading}> <span style={{ color: "red" }}>/</span> THE CHALLENGES</p>
+                        <p className={styles.subheading}> <span style={{ color: "red" }}>/</span> Our offerings</p>
                         <h2 className={styles.heading}>
-                            Enterprise data remains{" "}
-                            <span>Siloed, Inaccessible,</span>
-                            <br />
-                            and <span>Underutilized</span>
+                            Digital transformation plans that link <br /> technology to{" "}
+                            <span>Business Results.</span>
                         </h2>
+                    </div>
+
+                    <div className={styles.topgrid}>
+                        {topcards.map((card, i) => {
+                            return (
+                                <div key={i} className={styles.topcard}>
+                                    <div className={styles.topoverlay}></div>
+                                    <div className={styles.topcontent}>
+                                        {/* <div className={styles.topiconWrapper}> */}
+                                        <Image
+                                            src={card.iconDefault}
+                                            alt="icon"
+                                            width={80}
+                                            height={80}
+                                            className={styles.topiconDefault}
+                                        />
+
+                                        <Image
+                                            src={card.iconHover}
+                                            alt="icon"
+                                            width={80}
+                                            height={80}
+                                            className={styles.topiconHover}
+                                        />
+                                        {/* </div> */}
+
+                                        <h3 className={styles.topchallengetitle}>{card.title}</h3>
+                                        <p className={styles.topdesc}>{card.desc}</p>
+                                    </div>
+                                </div>
+                            );
+                        })}
                     </div>
 
                     {/* Grid */}
@@ -364,25 +409,24 @@ export default function WhatWeDoPage() {
                             return (
                                 <div key={i} className={styles.card}>
                                     <div className={styles.overlay}></div>
-
                                     <div className={styles.content}>
-                                        <div className={styles.iconWrapper}>
-                                            <Image
-                                                src={card.iconDefault}
-                                                alt="icon"
-                                                width={60}
-                                                height={60}
-                                                className={styles.iconDefault}
-                                            />
+                                        {/* <div className={styles.iconWrapper}> */}
+                                        <Image
+                                            src={card.iconDefault}
+                                            alt="icon"
+                                            width={80}
+                                            height={80}
+                                            className={styles.iconDefault}
+                                        />
 
-                                            <Image
-                                                src={card.iconHover}
-                                                alt="icon"
-                                                width={60}
-                                                height={60}
-                                                className={styles.iconHover}
-                                            />
-                                        </div>
+                                        <Image
+                                            src={card.iconHover}
+                                            alt="icon"
+                                            width={80}
+                                            height={80}
+                                            className={styles.iconHover}
+                                        />
+                                        {/* </div> */}
 
                                         <h3 className={styles.challengetitle}>{card.title}</h3>
                                         <p className={styles.desc}>{card.desc}</p>

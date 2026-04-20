@@ -122,9 +122,11 @@
     top: calc(100% + 12px);
     /* visual gap — bridged by ::after */
     /* left: 50%; */
-    right: -775%;
+    /* right: -775%; */
     transform: translateX(-50%) translateY(-6px);
-    width: 1080px;
+    /* width: 1080px; */
+    left: -192px;
+    width: 920px;
     background: #fff;
     border: 1px solid #e5e5e5;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.10);
