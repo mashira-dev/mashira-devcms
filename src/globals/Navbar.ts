@@ -13,45 +13,78 @@ export const NavbarGlobal: GlobalConfig = {
       name: 'navLinks',
       type: 'array',
       admin: {
-        description: 'Top-level navigation links (e.g. Who We Are, Resources)',
-      },
-      fields: [
-        { name: 'label', type: 'text', required: true },
-        { name: 'href', type: 'text', required: true },
-      ],
-    },
-    {
-      name: 'megaMenuSections',
-      type: 'array',
-      admin: {
-        description: 'Sections shown in the "What We Do" mega-menu dropdown',
+        description: 'All top-level navigation links. Check "Has Mega Menu" on any link to attach a dropdown.',
       },
       fields: [
         {
-          name: 'category',
+          name: 'label',
           type: 'text',
           required: true,
-          admin: { description: 'e.g. Data Engineering and BI' },
         },
         {
-          name: 'icon',
-          type: 'select',
+          name: 'href',
+          type: 'text',
           required: true,
-          options: [
-            { label: 'Strategy', value: 'strategy' },
-            { label: 'Data', value: 'data' },
-            { label: 'AI', value: 'ai' },
-            { label: 'Business', value: 'business' },
-            { label: 'Cloud', value: 'cloud' },
-            { label: 'Support', value: 'support' },
+        },
+        {
+          name: 'hasMegaMenu',
+          type: 'checkbox',
+          defaultValue: false,
+          admin: {
+            description: 'Enable a mega-menu dropdown for this link',
+          },
+        },
+        {
+          name: 'megaMenuTagline',
+          type: 'group',
+          admin: {
+            condition: (_, siblingData) => siblingData?.hasMegaMenu,
+            description: 'Left-panel text inside the dropdown',
+          },
+          fields: [
+            {
+              name: 'heading',
+              type: 'text',
+            },
+            {
+              name: 'body',
+              type: 'textarea',
+            },
           ],
         },
         {
-          name: 'links',
+          name: 'megaMenuSections',
           type: 'array',
+          admin: {
+            condition: (_, siblingData) => siblingData?.hasMegaMenu,
+            description: 'Service/category sections shown in the dropdown grid',
+          },
           fields: [
-            { name: 'label', type: 'text', required: true },
-            { name: 'href', type: 'text', required: true },
+            {
+              name: 'category',
+              type: 'text',
+              required: true,
+            },
+            {
+              name: 'icon',
+              type: 'select',
+              options: [
+                { label: 'Strategy', value: 'strategy' },
+                { label: 'Data', value: 'data' },
+                { label: 'AI', value: 'ai' },
+                { label: 'Business', value: 'business' },
+                { label: 'Cloud', value: 'cloud' },
+                { label: 'Support', value: 'support' },
+              ],
+            },
+            {
+              name: 'links',
+              type: 'array',
+              fields: [
+                { name: 'label', type: 'text', required: true },
+                { name: 'href', type: 'text', required: true },
+              ],
+            },
           ],
         },
       ],
@@ -70,22 +103,6 @@ export const NavbarGlobal: GlobalConfig = {
       fields: [
         { name: 'linkedin', type: 'text' },
         { name: 'twitter', type: 'text' },
-      ],
-    },
-    {
-      name: 'megaMenuTagline',
-      type: 'group',
-      admin: {
-        description: 'Left panel text inside the mega-menu',
-      },
-      fields: [
-        { name: 'heading', type: 'text', defaultValue: 'Turning complexity into clarity' },
-        {
-          name: 'body',
-          type: 'textarea',
-          defaultValue:
-            'We combine strategy, design, technology, and data to deliver unified solutions that turn ideas into impact.',
-        },
       ],
     },
   ],

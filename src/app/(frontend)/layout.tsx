@@ -1,6 +1,6 @@
 import "./styles.css";
 import Image from "next/image";
-import NavbarServer from "../(frontend)/NavbarServer";
+import Navbar from "../(frontend)/navbar";
 import rightA from "../../../public/images/rightArrow.png"
 import { Hanken_Grotesk, Playfair_Display } from "next/font/google";
 import localFont from "next/font/local";
@@ -44,7 +44,7 @@ export default function FrontendLayout({
       suppressHydrationWarning
     >
       <body suppressHydrationWarning>
-        <NavbarServer />
+        <Navbar />
         <main>{children}</main>
       </body>
     </html>

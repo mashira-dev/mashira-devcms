@@ -622,29 +622,37 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface Navbar {
   id: string;
   /**
-   * Top-level navigation links (e.g. Who We Are, Resources)
+   * All top-level navigation links. Check "Has Mega Menu" on any link to attach a dropdown.
    */
   navLinks?:
     | {
         label: string;
         href: string;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Sections shown in the "What We Do" mega-menu dropdown
-   */
-  megaMenuSections?:
-    | {
         /**
-         * e.g. Data Engineering and BI
+         * Enable a mega-menu dropdown for this link
          */
-        category: string;
-        icon: 'strategy' | 'data' | 'ai' | 'business' | 'cloud' | 'support';
-        links?:
+        hasMegaMenu?: boolean | null;
+        /**
+         * Left-panel text inside the dropdown
+         */
+        megaMenuTagline?: {
+          heading?: string | null;
+          body?: string | null;
+        };
+        /**
+         * Service/category sections shown in the dropdown grid
+         */
+        megaMenuSections?:
           | {
-              label: string;
-              href: string;
+              category: string;
+              icon?: ('strategy' | 'data' | 'ai' | 'business' | 'cloud' | 'support') | null;
+              links?:
+                | {
+                    label: string;
+                    href: string;
+                    id?: string | null;
+                  }[]
+                | null;
               id?: string | null;
             }[]
           | null;
@@ -658,13 +666,6 @@ export interface Navbar {
   socialLinks?: {
     linkedin?: string | null;
     twitter?: string | null;
-  };
-  /**
-   * Left panel text inside the mega-menu
-   */
-  megaMenuTagline?: {
-    heading?: string | null;
-    body?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -816,18 +817,25 @@ export interface NavbarSelect<T extends boolean = true> {
     | {
         label?: T;
         href?: T;
-        id?: T;
-      };
-  megaMenuSections?:
-    | T
-    | {
-        category?: T;
-        icon?: T;
-        links?:
+        hasMegaMenu?: T;
+        megaMenuTagline?:
           | T
           | {
-              label?: T;
-              href?: T;
+              heading?: T;
+              body?: T;
+            };
+        megaMenuSections?:
+          | T
+          | {
+              category?: T;
+              icon?: T;
+              links?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                    id?: T;
+                  };
               id?: T;
             };
         id?: T;
@@ -843,12 +851,6 @@ export interface NavbarSelect<T extends boolean = true> {
     | {
         linkedin?: T;
         twitter?: T;
-      };
-  megaMenuTagline?:
-    | T
-    | {
-        heading?: T;
-        body?: T;
       };
   updatedAt?: T;
   createdAt?: T;
