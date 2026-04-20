@@ -75,9 +75,9 @@
     line-height: 1.6;
 }
 
-/* partners-section start */
-.partners-section {
-    display: flex;
+/* partnersSection start */
+.partnersSection {
+    /* display: flex; */
     width: 100%;
     border-top: 1px solid #e7e7e7;
     border-bottom: 1px solid #e7e7e7;
@@ -85,12 +85,12 @@
 }
 
 /* LEFT SIDE */
-.left-partners-section {
-    width: 60%;
+.leftPartnersSection {
+    /* width: 60%; */
     padding: 20px 30px;
 }
 
-.left-partners-section h1 {
+.leftPartnersSection h1 {
     font-size: 16px;
     font-weight: 500;
     margin-bottom: 12px;
@@ -98,7 +98,7 @@
 }
 
 /* LOGO ITEM */
-.logo-item {
+.logoItem {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -112,7 +112,7 @@
     white-space: nowrap;
 }
 
-.marquee-content {
+.marqueeContent {
     display: flex;
     gap: 32px;
     width: max-content;
@@ -120,26 +120,26 @@
 }
 
 /* RIGHT SIDE */
-.right-partners-section {
+.rightPartnersSection {
     width: 40%;
     display: flex;
 }
 
-.stat-box {
+.statBox {
     flex: 1;
     text-align: left;
     padding: 20px;
     border-left: 1px solid #e7e7e7;
 }
 
-.stat-box h2 {
+.statBox h2 {
     font-size: 32px;
     font-weight: 500;
     margin-bottom: 5px;
     color: #111;
 }
 
-.stat-box p {
+.statBox p {
     font-size: 14px;
     color: #666;
 }
@@ -155,12 +155,12 @@
     }
 }
 
-/* partners-section end */
+/* partnersSection end */
 
 /* challenges start */
 .section {
     background: #FAFAFA;
-    padding: 60px;
+    padding: 80px 48px;
 }
 
 .challengeContainer {
@@ -173,24 +173,138 @@
 }
 
 .subheading {
-    font-size: 12px;
-    letter-spacing: 2px;
-    color: #777;
+    font-size: 16px;
+    letter-spacing: 0px;
+    color: #2B2B2D;
     border: 1px solid #cfcfcf;
-    padding: 6px;
+    padding: 8px 16px;
     border-radius: 4px;
     width: 12%;
+    text-transform: uppercase;
 }
 
 .heading {
-    font-size: 42px;
-    font-weight: 300;
+    font-size: 52px;
+    font-weight: 400;
     margin: 28px 0;
-    color: #111;
+    letter-spacing: -2%;
+    line-height: 70px;
+    color: #2B2B2D;
 }
 
 .heading span {
     font-style: italic;
+}
+
+.topgrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-bottom: 32px;
+}
+
+/* CARD */
+.topcard {
+    position: relative;
+    background: #fafafa;
+    border: 1px solid #E7E7E7;
+    padding: 32px;
+    /* min-height: 260px; */
+    overflow: hidden;
+    cursor: pointer;
+    /* height: 20rem; */
+}
+
+/* CONTENT */
+.topcontent {
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s ease;
+}
+
+.topchallengetitle {
+    font-size: 24px;
+    font-weight: 500;
+    color: #2B2B2D;
+    /* margin-bottom: 10px; */
+    margin: 80px 0 32px 0;
+    transition: color 0.3s ease;
+}
+
+.topdesc {
+    font-size: 16px;
+    color: #5D5D5D;
+    line-height: 100%;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.topoverlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: black;
+    height: 0%;
+    transition: height 0.4s ease;
+    z-index: 1;
+}
+
+/* HOVER EFFECT */
+.topcard:hover .topoverlay {
+    height: 100%;
+}
+
+/* TEXT COLOR CHANGE (no content movement) */
+.topcard:hover .icon,
+.topcard:hover .topchallengetitle,
+.topcard:hover .topdesc {
+    color: white;
+}
+
+/* Slight softer paragraph white */
+.topcard:hover .topdesc {
+    color: #ccc;
+}
+
+/* Wrapper */
+.topiconWrapper {
+    position: relative;
+    width: 28px;
+    height: 28px;
+    margin-bottom: 16px;
+}
+
+/* Default visible */
+.topiconDefault {
+    opacity: 1;
+    top: 0;
+    /* position: absolute; */
+    left: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover hidden initially */
+.topiconHover {
+    opacity: 0;
+    top: 0;
+    position: absolute;
+    left: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(6px);
+}
+
+/* Hover swap */
+.topcard:hover .topiconDefault {
+    opacity: 0;
+    /* position: absolute !important; */
+    transform: translateY(-6px);
+}
+
+.topcard:hover .topiconHover {
+    opacity: 1;
+    /* position: absolute !important; */
+    transform: translateY(0);
 }
 
 /* GRID */
@@ -205,11 +319,11 @@
     position: relative;
     background: white;
     border: 1px solid #e5e5e5;
-    padding: 28px;
-    min-height: 260px;
+    padding: 32px;
+    /* min-height: 260px; */
     overflow: hidden;
     cursor: pointer;
-    height: 20rem;
+    /* height: 20rem; */
 }
 
 /* CONTENT */
@@ -227,18 +341,19 @@
 }
 
 .challengetitle {
-    font-size: 16px;
+    font-size: 24px;
     font-weight: 500;
-    color: #111;
+    color: #2B2B2D;
     /* margin-bottom: 10px; */
-    margin: 4rem 0px 2rem 0;
+    margin: 80px 0 32px 0;
     transition: color 0.3s ease;
 }
 
 .desc {
-    font-size: 13px;
-    color: #666;
-    line-height: 1.6;
+    font-size: 16px;
+    color: #5D5D5D;
+    font-weight: 400;
+    line-height: 100%;
     transition: color 0.3s ease;
 }
 
@@ -282,7 +397,7 @@
 /* Both images stacked */
 .iconDefault,
 .iconHover {
-    position: absolute !important;
+    /* position: absolute !important; */
     top: 0;
     left: 0;
     transition: opacity 0.3s ease, transform 0.3s ease;
@@ -296,6 +411,7 @@
 /* Hover hidden initially */
 .iconHover {
     opacity: 0;
+    position: absolute;
     transform: translateY(6px);
 }
 
