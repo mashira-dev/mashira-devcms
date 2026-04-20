@@ -69,6 +69,11 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    services: Service;
+    posts: Post;
+    testimonials: Testimonial;
+    partners: Partner;
+    'function-solutions': FunctionSolution;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -78,6 +83,11 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    services: ServicesSelect<false> | ServicesSelect<true>;
+    posts: PostsSelect<false> | PostsSelect<true>;
+    testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
+    partners: PartnersSelect<false> | PartnersSelect<true>;
+    'function-solutions': FunctionSolutionsSelect<false> | FunctionSolutionsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -87,8 +97,18 @@ export interface Config {
     defaultIDType: string;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    navbar: Navbar;
+    homepage: Homepage;
+    footer: Footer;
+    'site-settings': SiteSetting;
+  };
+  globalsSelect: {
+    navbar: NavbarSelect<false> | NavbarSelect<true>;
+    homepage: HomepageSelect<false> | HomepageSelect<true>;
+    footer: FooterSelect<false> | FooterSelect<true>;
+    'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
+  };
   locale: null;
   widgets: {
     collections: CollectionsWidget;
@@ -163,6 +183,175 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services".
+ */
+export interface Service {
+  id: string;
+  title: string;
+  /**
+   * URL-friendly identifier (e.g. gen-ai-knowledge-engines)
+   */
+  slug: string;
+  category: 'strategy' | 'data' | 'ai' | 'business' | 'cloud' | 'support';
+  /**
+   * Used in cards and mega-menu previews
+   */
+  shortDescription: string;
+  fullDescription?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  icon?: ('strategy' | 'data' | 'ai' | 'business' | 'cloud' | 'support') | null;
+  image?: (string | null) | Media;
+  /**
+   * Show this service in the homepage "What We Do" scroll section
+   */
+  isFeaturedOnHome?: boolean | null;
+  /**
+   * Display order (lower = first)
+   */
+  order?: number | null;
+  isActive?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts".
+ */
+export interface Post {
+  id: string;
+  title: string;
+  /**
+   * URL-friendly identifier (auto-generate from title)
+   */
+  slug: string;
+  /**
+   * Short summary shown on cards and listings
+   */
+  excerpt: string;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  coverImage?: (string | null) | Media;
+  author?: string | null;
+  /**
+   * Estimated read time in minutes
+   */
+  readTime?: number | null;
+  publishedDate?: string | null;
+  category?: ('insights' | 'case-study' | 'news' | 'guide') | null;
+  tags?:
+    | {
+        tag?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Show in the homepage blog carousel
+   */
+  isFeaturedOnHome?: boolean | null;
+  isPublished?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials".
+ */
+export interface Testimonial {
+  id: string;
+  clientName: string;
+  /**
+   * Job title (e.g. Chief Data Officer)
+   */
+  clientTitle: string;
+  clientCompany: string;
+  clientPhoto?: (string | null) | Media;
+  quote: string;
+  /**
+   * Display order in the carousel (lower = first)
+   */
+  order?: number | null;
+  isActive?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partners".
+ */
+export interface Partner {
+  id: string;
+  name: string;
+  logo: string | Media;
+  /**
+   * Partner website URL (optional)
+   */
+  website?: string | null;
+  /**
+   * Display order in the marquee (lower = first)
+   */
+  order?: number | null;
+  isActive?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "function-solutions".
+ */
+export interface FunctionSolution {
+  id: string;
+  /**
+   * Card headline (e.g. Finance & Accounting)
+   */
+  title: string;
+  function: 'finance' | 'sales' | 'hr' | 'operations';
+  description: string;
+  /**
+   * Bullet-point capabilities shown on the card
+   */
+  capabilities?:
+    | {
+        item: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Optional icon or illustration for the card
+   */
+  icon?: (string | null) | Media;
+  order?: number | null;
+  isActive?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -192,6 +381,26 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: string | Media;
+      } | null)
+    | ({
+        relationTo: 'services';
+        value: string | Service;
+      } | null)
+    | ({
+        relationTo: 'posts';
+        value: string | Post;
+      } | null)
+    | ({
+        relationTo: 'testimonials';
+        value: string | Testimonial;
+      } | null)
+    | ({
+        relationTo: 'partners';
+        value: string | Partner;
+      } | null)
+    | ({
+        relationTo: 'function-solutions';
+        value: string | FunctionSolution;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -277,6 +486,97 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services_select".
+ */
+export interface ServicesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  category?: T;
+  shortDescription?: T;
+  fullDescription?: T;
+  icon?: T;
+  image?: T;
+  isFeaturedOnHome?: T;
+  order?: T;
+  isActive?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts_select".
+ */
+export interface PostsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  excerpt?: T;
+  content?: T;
+  coverImage?: T;
+  author?: T;
+  readTime?: T;
+  publishedDate?: T;
+  category?: T;
+  tags?:
+    | T
+    | {
+        tag?: T;
+        id?: T;
+      };
+  isFeaturedOnHome?: T;
+  isPublished?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials_select".
+ */
+export interface TestimonialsSelect<T extends boolean = true> {
+  clientName?: T;
+  clientTitle?: T;
+  clientCompany?: T;
+  clientPhoto?: T;
+  quote?: T;
+  order?: T;
+  isActive?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partners_select".
+ */
+export interface PartnersSelect<T extends boolean = true> {
+  name?: T;
+  logo?: T;
+  website?: T;
+  order?: T;
+  isActive?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "function-solutions_select".
+ */
+export interface FunctionSolutionsSelect<T extends boolean = true> {
+  title?: T;
+  function?: T;
+  description?: T;
+  capabilities?:
+    | T
+    | {
+        item?: T;
+        id?: T;
+      };
+  icon?: T;
+  order?: T;
+  isActive?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv_select".
  */
 export interface PayloadKvSelect<T extends boolean = true> {
@@ -314,6 +614,352 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "navbar".
+ */
+export interface Navbar {
+  id: string;
+  /**
+   * Top-level navigation links (e.g. Who We Are, Resources)
+   */
+  navLinks?:
+    | {
+        label: string;
+        href: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Sections shown in the "What We Do" mega-menu dropdown
+   */
+  megaMenuSections?:
+    | {
+        /**
+         * e.g. Data Engineering and BI
+         */
+        category: string;
+        icon: 'strategy' | 'data' | 'ai' | 'business' | 'cloud' | 'support';
+        links?:
+          | {
+              label: string;
+              href: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  ctaButton?: {
+    label?: string | null;
+    href?: string | null;
+  };
+  socialLinks?: {
+    linkedin?: string | null;
+    twitter?: string | null;
+  };
+  /**
+   * Left panel text inside the mega-menu
+   */
+  megaMenuTagline?: {
+    heading?: string | null;
+    body?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "homepage".
+ */
+export interface Homepage {
+  id: string;
+  hero: {
+    /**
+     * Main headline text (supports line breaks via \n)
+     */
+    headline: string;
+    /**
+     * Supporting text below the headline
+     */
+    subheadline?: string | null;
+    primaryCTA?: {
+      label?: string | null;
+      href?: string | null;
+    };
+    secondaryCTA?: {
+      label?: string | null;
+      href?: string | null;
+    };
+    backgroundImage?: (string | null) | Media;
+  };
+  /**
+   * Key stats shown in the partners / social proof section
+   */
+  stats?:
+    | {
+        /**
+         * e.g. 120+
+         */
+        value: string;
+        /**
+         * e.g. Enterprise Clients
+         */
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Items for the "Why Mashira" sticky-scroll section
+   */
+  whyMashira?:
+    | {
+        title: string;
+        description: string;
+        illustration?: (string | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  seo?: {
+    /**
+     * Browser tab title
+     */
+    title?: string | null;
+    /**
+     * Meta description for search engines
+     */
+    description?: string | null;
+    /**
+     * Open Graph social share image
+     */
+    ogImage?: (string | null) | Media;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
+export interface Footer {
+  id: string;
+  /**
+   * Short company description shown below the logo in the footer
+   */
+  brandDescription?: string | null;
+  /**
+   * Footer navigation columns
+   */
+  columns?:
+    | {
+        heading: string;
+        links?:
+          | {
+              label: string;
+              href: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  socialLinks?: {
+    linkedin?: string | null;
+    twitter?: string | null;
+  };
+  /**
+   * Copyright line (year is appended automatically)
+   */
+  copyrightText?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings".
+ */
+export interface SiteSetting {
+  id: string;
+  companyName?: string | null;
+  email?: string | null;
+  phone?: string | null;
+  /**
+   * Office locations shown in footer and contact page
+   */
+  locations?:
+    | {
+        country: string;
+        city: string;
+        address?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  socialLinks?: {
+    linkedin?: string | null;
+    twitter?: string | null;
+  };
+  /**
+   * External booking link (e.g. Calendly)
+   */
+  consultationUrl?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "navbar_select".
+ */
+export interface NavbarSelect<T extends boolean = true> {
+  navLinks?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        id?: T;
+      };
+  megaMenuSections?:
+    | T
+    | {
+        category?: T;
+        icon?: T;
+        links?:
+          | T
+          | {
+              label?: T;
+              href?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  ctaButton?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+      };
+  socialLinks?:
+    | T
+    | {
+        linkedin?: T;
+        twitter?: T;
+      };
+  megaMenuTagline?:
+    | T
+    | {
+        heading?: T;
+        body?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "homepage_select".
+ */
+export interface HomepageSelect<T extends boolean = true> {
+  hero?:
+    | T
+    | {
+        headline?: T;
+        subheadline?: T;
+        primaryCTA?:
+          | T
+          | {
+              label?: T;
+              href?: T;
+            };
+        secondaryCTA?:
+          | T
+          | {
+              label?: T;
+              href?: T;
+            };
+        backgroundImage?: T;
+      };
+  stats?:
+    | T
+    | {
+        value?: T;
+        label?: T;
+        id?: T;
+      };
+  whyMashira?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        illustration?: T;
+        id?: T;
+      };
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        ogImage?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer_select".
+ */
+export interface FooterSelect<T extends boolean = true> {
+  brandDescription?: T;
+  columns?:
+    | T
+    | {
+        heading?: T;
+        links?:
+          | T
+          | {
+              label?: T;
+              href?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  socialLinks?:
+    | T
+    | {
+        linkedin?: T;
+        twitter?: T;
+      };
+  copyrightText?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings_select".
+ */
+export interface SiteSettingsSelect<T extends boolean = true> {
+  companyName?: T;
+  email?: T;
+  phone?: T;
+  locations?:
+    | T
+    | {
+        country?: T;
+        city?: T;
+        address?: T;
+        id?: T;
+      };
+  socialLinks?:
+    | T
+    | {
+        linkedin?: T;
+        twitter?: T;
+      };
+  consultationUrl?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

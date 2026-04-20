@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Navbar from "../navbar";
 import styles from "./contact.module.css";
 import Footer from "../footer";
 import React, { useState } from "react";
@@ -56,7 +55,7 @@ export default function Resources() {
 
     return (
         <>
-            <Navbar />
+
             <main className={styles.page}>
                 <div className={styles.container}>
                     <section className={styles.left}>

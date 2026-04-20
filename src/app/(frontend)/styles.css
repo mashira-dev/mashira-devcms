@@ -12,6 +12,15 @@ body {
   scrollbar-width: none;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-aspekta), sans-serif;
+}
+
 body::-webkit-scrollbar {
   display: none;
   /* Chrome, Safari */
@@ -418,13 +427,22 @@ i,
 /* services-section start */
 
 .services-section {
-  /* background: linear-gradient(to bottom, #0c0c0c, #1a1a1a); */
+  background: linear-gradient(to bottom, #0c0c0c, #1a1a1a);
   color: #fff;
   background: #2B2B2D;
   padding: 80px 20px;
-  /* background-image: url("/images/enterpriseBg.png"); */
+  background-image: url("/images/enterpriseBg.png");
   text-align: center;
 }
+
+/* .services-section {
+  color: #fff;
+  text-align: center;
+  background:
+    linear-gradient(rgba(43, 43, 45, 0.75), rgba(43, 43, 45, 0.75)),
+    url("/images/noise.svg") center/cover no-repeat;
+  padding: 80px 20px;
+} */
 
 .badge {
   display: inline-block;

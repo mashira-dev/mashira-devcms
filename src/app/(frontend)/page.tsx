@@ -14,7 +14,6 @@ import type { Swiper as SwiperType } from "swiper";
 import bubbleChart from "../../../public/images/support-technology.png";
 import Footer from "../(frontend)/footer";
 import styles from "./WhyMashira.module.css";
-import Navbar from "../(frontend)/navbar";
 import rightA from "../../../public/images/rightArrow.png"
 
 gsap.registerPlugin(ScrollTrigger);
@@ -282,7 +281,7 @@ export default function HomePage() {
   return (
     <>
       <div className="app-bg">
-        <Navbar />
+
         <section className="hero">
           <div className="hero-content">
             <p className="herotag">

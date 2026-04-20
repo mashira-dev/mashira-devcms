@@ -1,4 +1,3 @@
-import Navbar from "../navbar";
 // import { useEffect, useRef, useState } from "react";
 import Footer from "../footer";
 import styles from "./whoweare.module.css";
@@ -55,7 +54,7 @@ export default function WhoWeArePage() {
     return (
         <div>
             <div className={styles.bg}>
-                <Navbar />
+
                 <section className={styles.aboutus}>
                     <div className={styles.container}>
                         <div className={styles.left}>

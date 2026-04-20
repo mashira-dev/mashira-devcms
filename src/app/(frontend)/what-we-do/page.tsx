@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Navbar from "../navbar";
 import styles from "./whatwedo.module.css";
 import contextual from "../../../../public/images/contextual.png"
 import governed from "../../../../public/images/governed.png"
@@ -287,7 +286,7 @@ export default function WhatWeDoPage() {
 
     return (
         <>
-            <Navbar />
+
             <section className={styles.hero}>
                 <div className={styles.container}>
                     {/* Left Content */}
