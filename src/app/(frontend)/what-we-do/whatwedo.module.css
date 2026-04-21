@@ -1369,3 +1369,333 @@
 }
 
 /* process css end */
+
+/* MS technologies starts */
+
+.techwrapper {
+    /* min-height: 100vh; */
+    background: #FAFAFA;
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.techheading {
+    font-size: 16px;
+    border: 1px solid #CFCFCF;
+    padding: 8px 16px;
+    margin-bottom: 48px;
+    color: #2B2B2D;
+    line-height: 20px;
+    font-weight: 400;
+    letter-spacing: 0px;
+}
+
+.techheading span {
+    color: #ff5722;
+    margin-right: 6px;
+}
+
+.techgrid {
+    display: grid;
+    /* grid-template-columns: repeat(4, 180px); */
+    grid-template-columns: repeat(4, 150px);
+    gap: 32px;
+}
+
+.techcard {
+    width: 150px;
+    height: 150px;
+    background: white;
+    border: 1px solid #e1e1e1;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease-in-out;
+}
+
+.techcard::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 11px;
+    background: repeating-linear-gradient(to bottom,
+            var(--hover-border) 0px,
+            var(--hover-border) 4px,
+            /* first line = 4px */
+
+            transparent 4px,
+            transparent 5px,
+            /* gap 1px */
+
+            var(--hover-border) 5px,
+            var(--hover-border) 7px,
+
+            transparent 7px,
+            transparent 8px,
+
+            var(--hover-border) 8px,
+            var(--hover-border) 9px,
+
+            transparent 9px,
+            transparent 11px);
+
+    transform: scaleX(0);
+    transition: transform 0.5s ease-in-out;
+}
+
+
+.techcard::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: repeating-linear-gradient(to top,
+            var(--hover-border) 0px,
+            var(--hover-border) 4px,
+
+            transparent 4px,
+            transparent 5px,
+
+            var(--hover-border) 5px,
+            var(--hover-border) 7px,
+
+            transparent 7px,
+            transparent 8px,
+
+            var(--hover-border) 8px,
+            var(--hover-border) 9px,
+
+            transparent 9px,
+            transparent 11px);
+    transform: scaleX(0);
+    transition: transform 0.5s ease-in-out;
+}
+
+.techcard::before {
+    top: 0;
+}
+
+.techcard::after {
+    bottom: 0;
+}
+
+.techcard:hover::before,
+.techcard:hover::after {
+    transform: scaleX(1);
+}
+
+.techcard:hover {
+    background: var(--hover-bg);
+}
+
+.imageWrap {
+    transition: all 0.5s ease-in-out;
+}
+
+.socialicon {
+    object-fit: contain;
+    transition: all 0.5s ease-in-out;
+}
+
+.techcard:hover .socialicon {
+    transform: scale(0.55) translateY(-20px);
+}
+
+.techlabel {
+    position: absolute;
+    bottom: 23px;
+    opacity: 0;
+    font-size: 16px;
+    font-weight: 400;
+    color: #2B2B2D;
+    transition: all 0.5s ease-in-out;
+}
+
+.techcard:hover .techlabel {
+    opacity: 1;
+}
+
+/* responsive */
+
+@media (max-width: 992px) {
+    .techgrid {
+        grid-template-columns: repeat(2, 180px);
+    }
+}
+
+@media (max-width: 576px) {
+    .techgrid {
+        grid-template-columns: repeat(1, 180px);
+    }
+
+    .techheading {
+        font-size: 20px;
+        text-align: center;
+    }
+}
+
+/* MS technologies ends */
+
+.mashiraSection {
+    background: #FAFAFA;
+    padding: 80px 48px;
+    text-align: center;
+}
+
+.mashiraBadge {
+    display: inline-block;
+    border: 1px solid #CFCFCF;
+    padding: 8px 16px;
+    font-size: 16px;
+    letter-spacing: 0px;
+    color: #2B2B2D;
+    margin-bottom: 22px;
+}
+
+.mashiraHeading {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 400;
+    margin-bottom: 60px;
+    color: #222;
+}
+
+.mashiraHeading em {
+    font-style: italic;
+}
+
+.mashiraGrid {
+    /* max-width: 1100px; */
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* grid-template-rows: repeat(2, 220px); */
+    border: 1px solid #e2e2e2;
+}
+
+.centerBox {
+    background: #FFFFFF;
+    border: 1px solid #e5e5e5;
+    padding: 212px 117px;
+    font-size: 64px;
+    text-align: left;
+}
+
+.mashiraCard {
+    /* width: 437px; */
+    background: #f7f7f7;
+    border: 1px solid #E8E8E8;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+    transition: transform .6s ease-in-out, box-shadow .6s ease-in-out;
+}
+
+.mashiraCard::after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 3px;
+    background: #FF3503;
+}
+
+/* 1st card = top left */
+.mashiraGrid>.mashiraCard:nth-child(1)::after {
+    top: 0;
+    left: 0;
+}
+
+/* 2nd card = top right */
+.mashiraGrid>.mashiraCard:nth-child(3)::after {
+    top: 0;
+    right: 0;
+}
+
+/* 3rd card = bottom left */
+.mashiraGrid>.mashiraCard:nth-child(4)::after {
+    bottom: 0;
+    left: 0;
+}
+
+/* 4th card = bottom right */
+.mashiraGrid>.mashiraCard:nth-child(5)::after {
+    bottom: 0;
+    right: 0;
+}
+
+.mashiraCard:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.08);
+}
+
+.mashiraCard p {
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 48px;
+}
+
+.mashiraCard:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* .mashiraIcon {
+    margin-bottom: 22px;
+} */
+
+.centerBox {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centerBox h3 {
+    font-size: clamp(3rem, 7vw, 5rem);
+    font-weight: 300;
+    color: #111;
+}
+
+.mashiraReveal {
+    animation: fadeUp .9s ease-in-out both;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 900px) {
+    .mashiraGrid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+    }
+
+    .centerBox {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        min-height: 180px;
+    }
+}
+
+@media (max-width: 600px) {
+    .mashiraGrid {
+        grid-template-columns: 1fr;
+    }
+}

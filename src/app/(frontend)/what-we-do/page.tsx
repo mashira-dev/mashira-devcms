@@ -175,6 +175,76 @@ const steps = [
     },
 ];
 
+const technologies = [
+    {
+        name: "Microsoft Azure",
+        image: "/images/azure.svg",
+        color: "#ECF8FD",
+        border: "#32ADE9",
+    },
+    {
+        name: "Microsoft 365",
+        image: "/images/microsoft365.svg",
+        color: "#F5EDFD",
+        border: "#9E73CB",
+    },
+    {
+        name: "Power Apps",
+        image: "/images/powerapps.svg",
+        color: "#F4ECF1",
+        border: "#8F2D87",
+    },
+    {
+        name: "Power Automate",
+        image: "/images/powerAutomate.svg",
+        color: "#E0EEFF",
+        border: "#0F43B6",
+    },
+    {
+        name: "Power BI",
+        image: "/images/PowerBi.svg",
+        color: "#FEFAE9",
+        border: "#D6950D",
+    },
+    {
+        name: "Microsoft Copilot",
+        image: "/images/copilot-icon.svg",
+        color: "#FFF5F4",
+        border: "#F3553D",
+    },
+    {
+        name: "Dynamics 365",
+        image: "/images/group.svg",
+        color: "#E9ECF3",
+        border: "#3753BF",
+    },
+    {
+        name: "Microsoft Fabric",
+        image: "/images/image16.svg",
+        color: "#EDFEF8",
+        border: "#299580",
+    },
+];
+
+const items = [
+    {
+        title: 'Certified Microsoft Solutions Partner with cross-platform expertise',
+        icon: '/images/star-award-01.svg',
+    },
+    {
+        title: 'Industry experience across manufacturing, services, government, and healthcare',
+        icon: '/images/briefcase-04.svg',
+    },
+    {
+        title: 'We are hands-on practitioners and not just consultants',
+        icon: '/images/user-check-01.svg',
+    },
+    {
+        title: 'Strategy that leads directly into implementation',
+        icon: '/images/ai-innovation-03.svg',
+    },
+];
+
 export default function WhatWeDoPage() {
 
     const logos = [
@@ -438,9 +508,40 @@ export default function WhatWeDoPage() {
                 </div>
             </section>
 
-            <section className={styles.approachContainer}>
+            <main className={styles.techwrapper}>
+                <div className={styles.techheading}>
+                    <span>/</span> MICROSOFT TECHNOLOGIES LEVERAGED
+                </div>
+
+                <div className={styles.techgrid}>
+                    {technologies.map((item, index) => (
+                        <div
+                            key={index}
+                            className={styles.techcard}
+                            style={{
+                                "--hover-bg": item.color,
+                                "--hover-border": item.border,
+                            } as React.CSSProperties
+                            }
+                        >
+                            <div className={styles.imageWrap}>
+                                <Image
+                                    src={item.image}
+                                    alt={item.name}
+                                    width={80}
+                                    height={80}
+                                    className={styles.socialicon}
+                                />
+                            </div>
+
+                            <p className={styles.techlabel}>{item.name}</p>
+                        </div>
+                    ))}
+                </div>
+            </main>
+
+            {/* <section className={styles.approachContainer}>
                 <div className={styles.containers}>
-                    {/* LEFT */}
                     <div className={styles.appleft}>
                         <span className={styles.badge}>
                             <span style={{ color: "red" }}>/</span>&nbsp;
@@ -464,7 +565,6 @@ export default function WhatWeDoPage() {
                         </h3>
                     </div>
 
-                    {/* RIGHT */}
                     <div className={styles.appright}>
                         <h4>WE BELIEVE ENTERPRISE AI MUST BE</h4>
 
@@ -531,9 +631,9 @@ export default function WhatWeDoPage() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
-            <section className={styles.serviceSection}>
+            {/* <section className={styles.serviceSection}>
                 <div className={styles.serviceContainer}>
                     <h2 className={styles.serviceHeading}>
                         Our AI Implementation <em className={styles.headingItalic}>Services</em>
@@ -551,7 +651,6 @@ export default function WhatWeDoPage() {
                     <div className={styles.servicegrid}>
                         {services.map((service) => (
                             <div key={service.id} className={styles.serviceCard}>
-                                {/* <div className={styles.serviceIconWrapper}>{service.icon}</div> */}
                                 <Image className={styles.serviceIconWrapper} src={service.icon} alt={service.title} width={80} height={80} />
                                 <h3 className={styles.cardTitle}>{service.title}</h3>
                                 <p className={styles.cardDescription}>{service.description}</p>
@@ -567,27 +666,7 @@ export default function WhatWeDoPage() {
                         ))}
                     </div>
                 </div>
-            </section>
-
-            <section className={styles.caseStudy}>
-                <div className={styles.caseOverlay} />
-
-                <div className={styles.caseContent}>
-                    <span className={styles.caseBadge}><span style={{ color: "red" }}>/</span> CASE STUDY</span>
-
-                    <h1 className={styles.caseTitle}>
-                        See how we implemented <br />
-                        Enterprise AI for
-                    </h1>
-                </div>
-
-                <div className={styles.action}>
-                    <button className={styles.readMore}>
-                        Read more
-                        <span className={styles.arrow}>→</span>
-                    </button>
-                </div>
-            </section>
+            </section> */}
 
             <section ref={sectionRef} className={styles.processSection}>
                 <div className={styles.processContainer}>
@@ -654,6 +733,26 @@ export default function WhatWeDoPage() {
                 </div>
             </section>
 
+            <section className={styles.caseStudy}>
+                <div className={styles.caseOverlay} />
+
+                <div className={styles.caseContent}>
+                    <span className={styles.caseBadge}><span style={{ color: "red" }}>/</span> CASE STUDY</span>
+
+                    <h1 className={styles.caseTitle}>
+                        See how we implemented <br />
+                        Enterprise AI for
+                    </h1>
+                </div>
+
+                <div className={styles.action}>
+                    <button className={styles.readMore}>
+                        Read more
+                        <span className={styles.arrow}>→</span>
+                    </button>
+                </div>
+            </section>
+
             <section className={styles.wrapper}>
                 <div className={styles.DoOverlay} />
 
@@ -706,6 +805,63 @@ export default function WhatWeDoPage() {
                                 </li>
                             </ul>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className={styles.mashiraSection}>
+                <span className={styles.mashiraBadge}><span style={{ color: "#FF3503" }}>/</span> WHY MASHIRA</span>
+                <h2 className={styles.mashiraHeading}>
+                    Why Clients Choose Us, and <em>Stay</em>
+                </h2>
+
+                <div className={styles.mashiraGrid}>
+                    <div className={`${styles.mashiraCard} ${styles.mashiraReveal}`}>
+                        <div className={styles.mashiraIcon}>
+                            <Image
+                                src={items[0].icon}
+                                alt="Image"
+                                width={80}
+                                height={80} />
+                        </div>
+                        <p>{items[0].title}</p>
+                    </div>
+
+                    <div className={styles.centerBox}>
+                        <h3>mashira</h3>
+                    </div>
+
+                    <div className={`${styles.mashiraCard} ${styles.mashiraReveal}`}>
+                        <div className={styles.mashiraIcon}>
+                            <Image
+                                src={items[1].icon}
+                                alt="Image"
+                                width={80}
+                                height={80} />
+                        </div>
+                        <p>{items[1].title}</p>
+                    </div>
+
+                    <div className={`${styles.mashiraCard} ${styles.mashiraReveal}`}>
+                        <div className={styles.mashiraIcon}>
+                            <Image
+                                src={items[2].icon}
+                                alt="Image"
+                                width={80}
+                                height={80} />
+                        </div>
+                        <p>{items[2].title}</p>
+                    </div>
+
+                    <div className={`${styles.mashiraCard} ${styles.mashiraReveal}`}>
+                        <div className={styles.mashiraIcon}>
+                            <Image
+                                src={items[3].icon}
+                                alt="Image"
+                                width={80}
+                                height={80} />
+                        </div>
+                        <p>{items[3].title}</p>
                     </div>
                 </div>
             </section>
