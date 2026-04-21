@@ -46,7 +46,6 @@ export default function Footer() {
         { label: "USA" },
         { label: "UK" },
         { label: "India" },
-        { label: "Contact" },
     ];
 
     const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });

@@ -1,0 +1,116 @@
+.section {
+  padding: 80px 60px;
+  text-align: center;
+  background: #f7f7f5;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: #555;
+  margin-bottom: 24px;
+}
+
+.heading {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 400;
+  color: #111;
+  margin-bottom: 56px;
+}
+
+.heading em {
+  font-style: italic;
+}
+
+.gridWrapper {
+  position: relative;
+}
+
+.gridWrapper::before,
+.gridWrapper::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #ff3503;
+  z-index: 1;
+}
+
+.gridWrapper::before {
+  top: -1px;
+  left: -1px;
+}
+
+.gridWrapper::after {
+  bottom: -1px;
+  right: -1px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+}
+
+.industryCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  transition: background 0.2s ease;
+}
+
+.industryCard:hover {
+  background: #fff;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 14px;
+  color: #ff3503;
+}
+
+.icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.industryCard span {
+  font-size: 13px;
+  color: #333;
+  line-height: 1.5;
+}
+
+@media (max-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 24px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

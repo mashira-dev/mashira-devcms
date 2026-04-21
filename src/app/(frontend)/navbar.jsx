@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import "./navbar.css";
@@ -180,18 +180,40 @@ function MegaMenu({ link, socials, cta }) {
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [navData, setNavData]   = useState(null);
+  const [hidden, setHidden]     = useState(false);
+  const lastScrollY             = useRef(0);
 
+  // Fetch CMS data
   useEffect(() => {
     const base = process.env.NEXT_PUBLIC_SERVER_URL ?? "http://localhost:3000";
     fetch(`${base}/api/globals/navbar`)
       .then((r) => r.json())
       .then((data) => {
-        // Only update state if Payload actually returned populated links
         if (data?.navLinks?.length) setNavData(data);
       })
-      .catch(() => {
-        // Silently fall back to hardcoded defaults
-      });
+      .catch(() => {});
+  }, []);
+
+  // Hide on scroll-down, reveal on scroll-up
+  useEffect(() => {
+    const THRESHOLD = 80; // px from top before the behaviour kicks in
+
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (y < THRESHOLD) {
+        setHidden(false);
+      } else if (y > lastScrollY.current + 4) {
+        // scrolling down — hide
+        setHidden(true);
+      } else if (y < lastScrollY.current - 4) {
+        // scrolling up — reveal
+        setHidden(false);
+      }
+      lastScrollY.current = y;
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const navLinks = navData?.navLinks   ?? FALLBACK.navLinks;
@@ -199,7 +221,7 @@ export default function Navbar() {
   const socials  = navData?.socialLinks ?? FALLBACK.socialLinks;
 
   return (
-    <header className="navbar">
+    <header className={`navbar${hidden ? " navbar--hidden" : ""}`}>
       <Link href="/">
         <Image src={logo} className="logo" alt="Mashira Logo" width={120} />
       </Link>

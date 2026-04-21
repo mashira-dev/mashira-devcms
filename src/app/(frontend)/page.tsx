@@ -16,6 +16,9 @@ import Footer from "../(frontend)/footer";
 import styles from "./WhyMashira.module.css";
 import rightA from "../../../public/images/rightArrow.png"
 
+import IndustriesSection from "./IndustriesSection"; // or inline it
+
+
 gsap.registerPlugin(ScrollTrigger);
 
 const services = [
@@ -24,30 +27,35 @@ const services = [
     title: "Enterprise digital transformation",
     description:
       "As enterprises move away from legacy technologies and fragmented processes, Mashira focuses on helping businesses align new technologies with business outcomes. We bring forth digital solutions to practical problems that drive operational effectiveness and workplace modernization.",
+    links: ["Digital Strategy", "Enterprise Digital Transformation"],
   },
   {
     icon: "/images/enterprise-complexity2.png",
     title: "Automation and AI solutions",
     description:
       "Businesses are often already sitting on ample data, the gap is in intelligence. Automation and AI solutions enable businesses to work smarter, grow faster and scale operations intelligently.",
+    links: ["AI Consulting", "Process Automation"],
   },
   {
     icon: "/images/enterprise-complexity1.png",
     title: "Data & Analytics",
     description:
       "Turn raw data into actionable insight. Our analytics practice helps enterprises build modern data platforms, self-service BI layers, and real-time dashboards that empower every decision-maker.",
+    links: ["Data Platforms", "BI & Dashboards"],
   },
   {
     icon: "/images/enterprise-complexity2.png",
     title: "Cloud Infrastructure",
     description:
       "From lift-and-shift migrations to cloud-native architectures, we design resilient, cost-efficient infrastructure on AWS, Azure, and GCP — so your teams ship faster and sleep better.",
+    links: ["Cloud Migration", "Cloud-Native Architecture"],
   },
   {
     icon: "/images/enterprise-complexity1.png",
     title: "Cybersecurity & Compliance",
     description:
       "Security is not a feature — it's a foundation. We help enterprises identify vulnerabilities, implement zero-trust frameworks, and stay ahead of evolving compliance requirements.",
+    links: ["Security Assessment", "Compliance Framework"],
   },
 ];
 
@@ -381,7 +389,7 @@ export default function HomePage() {
               </span>
             </button>
           </div>
-          {services.map((svc, i) => (
+          {/* {services.map((svc, i) => (
             <div key={i} className="card">
               <Image
                 src={svc.icon}
@@ -394,7 +402,7 @@ export default function HomePage() {
               <h3>{svc.title}</h3>
               <p>{svc.description}</p>
 
-              {/* <span
+              <span
                 className="card-arrow"
                 onMouseEnter={() => setHoveredIndex(i)}
                 onMouseLeave={() => setHoveredIndex(null)}
@@ -403,7 +411,33 @@ export default function HomePage() {
                   src={hoveredIndex === i ? rightArrowHover : rightArrow}
                   alt="rightArrow"
                 />
-              </span> */}
+              </span>
+            </div>
+          ))} */}
+
+          {services.map((svc, i) => (
+            <div key={i} className="card">
+              <Image
+                src={svc.icon}
+                alt={svc.title}
+                width={48}
+                height={48}
+                className="cardIcon"
+              />
+
+              <h3>{svc.title}</h3>
+              <p>{svc.description}</p>
+
+              <div className="card-divider" />
+
+              <div className="card-links">
+                {svc.links?.map((link, j) => (
+                  <a key={j} href="#" className="card-link">
+                    <span className="card-link-arrow">→</span>
+                    {link}
+                  </a>
+                ))}
+              </div>
             </div>
           ))}
         </div>
@@ -440,7 +474,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="blog-section">
+      {/* <section className="blog-section">
         <div className="blog-header">
           <div>
             <span className="tag"><span style={{ color: "#FF3503" }}>/</span> INSIGHTS</span>
@@ -537,7 +571,7 @@ export default function HomePage() {
             </button>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className={styles.section} ref={whySectionRef}>
 
@@ -581,7 +615,7 @@ export default function HomePage() {
 
       </section>
 
-      <section className="testimonials-section">
+      {/* <section className="testimonials-section">
         <div className="testimonials-overlay" />
 
         <div className="testimonials-header">
@@ -592,7 +626,6 @@ export default function HomePage() {
         </div>
 
         <div className="testimonials-grid">
-          {/* LEFT CARD */}
           <div className="testimonial-card">
             <div className="testimonial-inner-border" />
 
@@ -644,7 +677,6 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* RIGHT CTA */}
           <div className="cta-card">
             <div className="cta-glow" />
 
@@ -669,7 +701,9 @@ export default function HomePage() {
             </button>
           </div>
         </div>
-      </section>
+      </section> */}
+
+      <IndustriesSection />
       <Footer />
     </>
   );

@@ -26,6 +26,11 @@ body::-webkit-scrollbar {
   /* Chrome, Safari */
 }
 
+/* Offset for fixed navbar (~72px tall) */
+main {
+  padding-top: 72px;
+}
+
 .app-bg {
   min-height: 100vh;
   background-color: #fff;
@@ -366,7 +371,7 @@ i,
   position: relative;
   border: 1px solid #E7E7E7;
   width: 470px;
-  height: 500px;
+  height: 550px;
 }
 
 /* .card img {
@@ -399,6 +404,44 @@ i,
   font-size: 14px;
   line-height: 1.7;
   color: #555;
+}
+
+.card-divider {
+  width: 100%;
+  height: 1px;
+  background: #e5e5e5;
+  margin: 28px 0 20px;
+}
+
+.card-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #111;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.card-link:hover {
+  color: #FF3503;
+}
+
+.card-link-arrow {
+  font-size: 14px;
+  color: #111;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.card-link:hover .card-link-arrow {
+  color: #FF3503;
+  transform: translateX(3px);
 }
 
 .card-arrow {

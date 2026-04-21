@@ -1,6 +1,7 @@
 import "./styles.css";
 import Image from "next/image";
 import Navbar from "../(frontend)/navbar";
+import SmoothScrollProvider from "../(frontend)/SmoothScrollProvider";
 import rightA from "../../../public/images/rightArrow.png"
 import { Hanken_Grotesk, Playfair_Display } from "next/font/google";
 import localFont from "next/font/local";
@@ -44,8 +45,10 @@ export default function FrontendLayout({
       suppressHydrationWarning
     >
       <body suppressHydrationWarning>
-        <Navbar />
-        <main>{children}</main>
+        <SmoothScrollProvider>
+          <Navbar />
+          <main>{children}</main>
+        </SmoothScrollProvider>
       </body>
     </html>
   );
