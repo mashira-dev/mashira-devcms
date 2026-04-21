@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import "./navbar.css";
-import logo from "@/assets/images/mashiralogo.png";
+import logo from "@/assets/images/mashira-logo.svg";
 import rightUp from "@/assets/images/solar_arrow-up-linear.png";
 
 // ── Icons ──────────────────────────────────────────────────────────────────────

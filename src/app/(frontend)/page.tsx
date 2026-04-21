@@ -210,8 +210,29 @@ export default function HomePage() {
     { name: "GlobalBank", icon: "/images/globalbank.png" },
   ];
 
+  const heroRef    = useRef<HTMLDivElement | null>(null);
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  const trackRef = useRef<HTMLDivElement | null>(null);
+  const trackRef   = useRef<HTMLDivElement | null>(null);
+
+  // Hero content drifts up + fades as sections slide over it
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.to(".hero-content", {
+        y: -70,
+        opacity: 0,
+        scale: 0.96,
+        ease: "none",
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1.2,
+        },
+      });
+    }, heroRef);
+
+    return () => ctx.revert();
+  }, []);
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
@@ -288,7 +309,7 @@ export default function HomePage() {
 
   return (
     <>
-      <div className="app-bg">
+      <div className="app-bg" ref={heroRef}>
 
         <section className="hero">
           <div className="hero-content">

@@ -26,20 +26,40 @@ body::-webkit-scrollbar {
   /* Chrome, Safari */
 }
 
-/* Offset for fixed navbar (~72px tall) */
+/* Push body content below fixed navbar */
 main {
-  padding-top: 72px;
+  padding-top: 64px;
 }
 
+/* ── HERO WRAPPER — sticky background layer ──────────────────────────────────
+   Stays pinned right below the navbar while all subsequent sections
+   scroll over the top of it. z-index: 0 keeps it behind everything. */
 .app-bg {
-  min-height: 100vh;
+  position: sticky;
+  top: 64px;                     /* flush against the navbar */
+  height: calc(100vh - 64px);    /* fills the remaining viewport */
+  z-index: 0;
+
   background-color: #fff;
   background-image: url("/images/background.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  /* background-attachment: fixed; */
   animation: moveBackground 20s ease-in-out infinite alternate;
+}
+
+/* ── SECTIONS THAT SLIDE OVER THE HERO ──────────────────────────────────────
+   Must be position: relative + z-index > 0 so they layer above .app-bg.
+   Each section already has a solid background-color, so the hero is hidden
+   as soon as the section's leading edge crosses it. */
+.partners-section,
+.whatwedo,
+.services-section,
+.testimonials-section,
+.IndustriesSection_section__,
+footer {
+  position: relative;
+  z-index: 1;
 }
 
 /* Background only for navbar + hero */
@@ -75,13 +95,11 @@ main {
 
 /* HERO */
 .hero {
-  /* height: 90vh; */
+  height: 100%;           /* fills the sticky .app-bg container */
   display: flex;
-  /* align-items: center; */
   justify-content: center;
   text-align: center;
   padding: 40px;
-  /* background: #fff; */
   background: transparent;
 }
 

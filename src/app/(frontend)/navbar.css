@@ -20,6 +20,7 @@
     transform: translateY(0);
     transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
         background 0.3s ease;
+    border-bottom: 1px solid #E7E7E7;
 }
 
 /* Scrolled down — slide the bar fully out of view */

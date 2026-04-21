@@ -5,6 +5,8 @@
     align-items: flex-start;
     min-height: 100vh;
     background: #f7f5f2;
+    position: relative;
+    z-index: 1;
 }
 
 /* ── LEFT COLUMN ── */
