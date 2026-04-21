@@ -8,6 +8,7 @@ import scalable from "../../../../public/images/scalable.png"
 import outcomes from "../../../../public/images/outcomes.png"
 import { useEffect, useRef, useState } from "react";
 import Footer from "../footer";
+import rightArrow from "../../../../public/images/linearrightarrow.svg"
 
 const cards = [
     {
@@ -245,6 +246,29 @@ const items = [
     },
 ];
 
+const challenges = [
+    {
+        title: "Competing Priorities, No Clear Order",
+        description:
+            "Technology initiatives are growing, but there’s no clear framework for prioritizing them.",
+    },
+    {
+        title: "AI on the Agenda. No Starting Point",
+        description:
+            "Leadership is asking about AI and Copilot, yet the organization isn’t aligned on where to begin.",
+    },
+    {
+        title: "Past Investments That Didn't Deliver",
+        description:
+            "Past technology investments didn’t deliver and the reasons were never fully examined.",
+    },
+    {
+        title: "No Clear Cost to Standing Still",
+        description:
+            "There’s a growing sense that change is needed, but no clear way to quantify.",
+    },
+];
+
 export default function WhatWeDoPage() {
 
     const logos = [
@@ -369,30 +393,37 @@ export default function WhatWeDoPage() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-
     return (
         <>
             <section className={styles.hero}>
                 <div className={styles.container}>
-                    {/* Left Content */}
                     <div className={styles.left}>
+                        <div className={styles.heroBadge}><span style={{ color: "#FF3503" }}>/</span> Strategy and Transformation</div>
                         <h1 className={styles.title}>
-                            Enterprise AI <br />
-                            Implementation <span>Solutions</span>
+                            Digital <span> Strategy </span>
                         </h1>
-
-                        <button className={styles.button}>
-                            Get Started
-                            <span className={styles.arrow}>→</span>
-                        </button>
+                        <h2 className={styles.subtitle}>
+                            A technology roadmap that tells you exactly where to invest next, and why.
+                        </h2>
+                        <div style={{ display: "flex", gap: "16px" }}>
+                            <button className={styles.button}>
+                                Book a Strategy Call
+                                <span className={styles.arrow}>
+                                    <Image
+                                        src={rightArrow}
+                                        alt="arrow"
+                                        width={24}
+                                        height={24}
+                                    />
+                                </span>
+                            </button>
+                            <div className={styles.subbutton}>View our Offerings</div>
+                        </div>
                     </div>
 
-                    {/* Right Content */}
                     <div className={styles.right}>
                         <p>
-                            From Gen AI Knowledge Engines to enterprise-grade AI Agents,
-                            Mashira designs and deploys systems that go live, get used, and
-                            deliver outcomes you can measure.
+                            We partner with our clients to create strategies that help their businesses reach their next level based on their present status and future needs.
                         </p>
                     </div>
                 </div>
@@ -429,6 +460,27 @@ export default function WhatWeDoPage() {
                     </div>
                 </div> */}
             </section>
+
+            <main className={styles.challengesWrapper}>
+                <section className={styles.challengesContainer}>
+                    <div className={styles.challengesBadge}><span style={{ color: "#FF3503" }}>/</span> CHALLENGES</div>
+
+                    <h1 className={styles.challengesHeading}>
+                        If any of these sound familiar,
+                        <br />
+                        you're in the <span>right place.</span>
+                    </h1>
+
+                    <div className={styles.challengesGrid}>
+                        {challenges.map((item, index) => (
+                            <div key={index} className={styles.challengesCard}>
+                                <h3>{item.title}</h3>
+                                <p>{item.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            </main>
 
             <section className={styles.section}>
                 <div className={styles.challengeContainer}>

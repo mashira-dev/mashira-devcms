@@ -6,14 +6,15 @@
             #f5f5f5,
             #eaeaea,
             #dddddd);
+    padding: 80px 48px;
     font-family: Arial, sans-serif;
     background-image: url("/images/servicemain.png");
 }
 
 .container {
-    width: 90%;
+    width: 100%;
     /* max-width: 1200px; */
-    margin: 0 auto;
+    /* margin: 0 auto; */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -23,11 +24,32 @@
     flex: 1;
 }
 
-.title {
-    font-size: 48px;
+.heroBadge {
+    display: inline-block;
+    border: 1px solid #CFCFCF;
+    padding: 8px 16px;
+    font-size: 16px;
     font-weight: 400;
-    color: #222;
-    line-height: 1.2;
+    line-height: 20px;
+    color: #2B2B2D;
+    letter-spacing: -2%;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    background: white;
+}
+
+.title {
+    font-size: 64px;
+    font-weight: 400;
+    color: #2B2B2D;
+    letter-spacing: -2%;
+    line-height: 84px;
+}
+
+.subtitle {
+    margin: 16px 0 48px 0;
+    font-size: 20px;
+    font-weight: 400;
 }
 
 .title span {
@@ -37,17 +59,27 @@
 }
 
 .button {
-    margin-top: 30px;
-    padding: 12px 20px;
-    background: #111;
+    /* margin-top: 30px; */
+    padding: 6px 6px 6px 16px;
+    background: #2B2B2D;
     color: #fff;
     border: none;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    font-size: 14px;
+    gap: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    font-size: 16px;
     transition: 0.3s ease;
+}
+
+.subbutton {
+    padding: 10px 16px;
+    border: 1px solid #CFCFCF;
+    align-content: center;
+    color: #2B2B2D;
+    font-size: 16px;
 }
 
 .button:hover {
@@ -70,9 +102,10 @@
 
 .right p {
     max-width: 400px;
-    font-size: 14px;
-    color: #555;
-    line-height: 1.6;
+    font-weight: 400;
+    font-size: 20px;
+    color: #5D5D5D;
+    line-height: 100%;
 }
 
 /* partnersSection start */
@@ -1699,3 +1732,134 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* challenges start */
+
+.challengesWrapper {
+    /* min-height: 100vh; */
+    background: #FAFAFA;
+    padding: 80px 48px;
+    display: flex;
+    justify-content: center;
+}
+
+.challengesContainer {
+    width: 100%;
+    /* max-width: 1280px; */
+    text-align: center;
+}
+
+.challengesBadge {
+    display: inline-block;
+    border: 1px solid #CFCFCF;
+    padding: 8px 16px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #2B2B2D;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+    background: white;
+}
+
+.challengesHeading {
+    font-size: 52px;
+    font-weight: 400;
+    color: #2B2B2D;
+    letter-spacing: -2%;
+    line-height: 70px;
+    margin: 0 auto 80px;
+}
+
+.challengesHeading span {
+    font-style: italic;
+    font-family: Georgia, serif;
+}
+
+.challengesGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+}
+
+.challengesCard {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #dddddd;
+    padding: 32px;
+    text-align: left;
+    /* min-height: 160px; */
+    background: transparent;
+    transition: background-color 0.35s ease, transform 0.35s ease;
+}
+
+.challengesCard::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 4px;
+    background: #ff3b00;
+    transform: translateX(-100%);
+    transition: transform 0.45s ease;
+}
+
+.challengesCard:hover {
+    background: #fff;
+}
+
+.challengesCard:hover::after {
+    transform: translateX(0);
+}
+
+.challengesCard h3 {
+    font-size: 24px;
+    line-height: 100%;
+    font-weight: 500;
+    color: #2B2B2D;
+    margin-bottom: 32px;
+}
+
+.challengesCard p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 100%;
+    color: #5D5D5D;
+    margin: 0;
+}
+
+@media (max-width: 1024px) {
+    .challengesHeading {
+        font-size: 52px;
+    }
+}
+
+@media (max-width: 768px) {
+    .challengesWrapper {
+        padding: 40px 20px;
+    }
+
+    .challengesHeading {
+        font-size: 38px;
+        margin-bottom: 50px;
+    }
+
+    .challengesGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .challengesCard {
+        min-height: auto;
+    }
+
+    .challengesCard h3 {
+        font-size: 20px;
+    }
+
+    .challengesCard p {
+        font-size: 16px;
+    }
+}
+
+/* challenges end */
