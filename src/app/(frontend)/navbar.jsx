@@ -108,7 +108,7 @@ const FALLBACK = {
     },
     { id: "3", label: "Resources", href: "/resources", hasMegaMenu: false },
   ],
-  ctaButton: { label: "Let's Talk", href: "/cantact" },
+  ctaButton: { label: "Let's Talk", href: "/contact" },
   socialLinks: { linkedin: "https://linkedin.com", twitter: "https://twitter.com" },
 };
 

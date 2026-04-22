@@ -94,7 +94,7 @@ export const NavbarGlobal: GlobalConfig = {
       type: 'group',
       fields: [
         { name: 'label', type: 'text', defaultValue: "Let's Talk" },
-        { name: 'href', type: 'text', defaultValue: '/cantact' },
+        { name: 'href', type: 'text', defaultValue: '/contact' },
       ],
     },
     {

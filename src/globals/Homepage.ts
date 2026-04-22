@@ -33,7 +33,7 @@ export const HomepageGlobal: GlobalConfig = {
           type: 'group',
           fields: [
             { name: 'label', type: 'text', defaultValue: 'Book a Consultation' },
-            { name: 'href', type: 'text', defaultValue: '/cantact' },
+            { name: 'href', type: 'text', defaultValue: '/contact' },
           ],
         },
         {
