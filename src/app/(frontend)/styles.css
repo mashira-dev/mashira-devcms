@@ -37,7 +37,7 @@ main {
 .app-bg {
   position: sticky;
   top: 64px;                     /* flush against the navbar */
-  height: calc(100vh - 64px);    /* fills the remaining viewport */
+  /* height: calc(100vh - 64px);  */
   z-index: 0;
 
   background-color: #fff;
@@ -45,7 +45,7 @@ main {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  animation: moveBackground 20s ease-in-out infinite alternate;
+  animation: moveBackground 10s ease-in-out infinite alternate;
 }
 
 /* ── SECTIONS THAT SLIDE OVER THE HERO ──────────────────────────────────────

@@ -210,9 +210,9 @@ export default function HomePage() {
     { name: "GlobalBank", icon: "/images/globalbank.png" },
   ];
 
-  const heroRef    = useRef<HTMLDivElement | null>(null);
+  const heroRef = useRef<HTMLDivElement | null>(null);
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  const trackRef   = useRef<HTMLDivElement | null>(null);
+  const trackRef = useRef<HTMLDivElement | null>(null);
 
   // Hero content drifts up + fades as sections slide over it
   useLayoutEffect(() => {
@@ -310,7 +310,6 @@ export default function HomePage() {
   return (
     <>
       <div className="app-bg" ref={heroRef}>
-
         <section className="hero">
           <div className="hero-content">
             <p className="herotag">
@@ -348,43 +347,44 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-      </div>
-      <section className="partners-section">
-        <div className="left-partners-section">
-          <h1>Trusted by</h1>
-          <div className="marquee">
-            <div className="marquee-content">
-              {logos.concat(logos).map((logo, index) => (
-                <div key={index} className="logo-item">
-                  <Image
-                    src={logo.icon}
-                    alt={logo.name}
-                    width={24}
-                    height={24}
-                  />
-                  <span>{logo.name}</span>
-                </div>
-              ))}
+        <section className="partners-section">
+          <div className="left-partners-section">
+            <h1>Trusted by</h1>
+            <div className="marquee">
+              <div className="marquee-content">
+                {logos.concat(logos).map((logo, index) => (
+                  <div key={index} className="logo-item">
+                    <Image
+                      src={logo.icon}
+                      alt={logo.name}
+                      width={24}
+                      height={24}
+                    />
+                    <span>{logo.name}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-        <div className="right-partners-section">
-          <div className="stat-box">
-            <h2>120+</h2>
-            <p>Clients</p>
-          </div>
+          <div className="right-partners-section">
+            <div className="stat-box">
+              <h2>120+</h2>
+              <p>Clients</p>
+            </div>
 
-          <div className="stat-box">
-            <h2>120+</h2>
-            <p>Success Stories</p>
-          </div>
+            <div className="stat-box">
+              <h2>120+</h2>
+              <p>Success Stories</p>
+            </div>
 
-          <div className="stat-box">
-            <h2>3+</h2>
-            <p>Country Presence</p>
+            <div className="stat-box">
+              <h2>3+</h2>
+              <p>Country Presence</p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+      </div>
 
       <section className="whatwedo" ref={sectionRef}>
         <div className="wwd-track" ref={trackRef}>
